@@ -13,7 +13,7 @@ App for Students at the *HS-Merseburg* for the club *Wärmi*.
 > The eventdetails can also be found here
 
 2. *Products and prices*
-> Lists all Products with and without the Member discounts
+> Lists all Products with and without the Member discounts  
 > like so: **(Sample Values)**
 
 | Product          | Price Normal  | Price Member  |
@@ -23,25 +23,25 @@ App for Students at the *HS-Merseburg* for the club *Wärmi*.
 | Cola             | 2.20€         |  2€           |
 
 3. *Wärmi* itself
-> Lists the current supervisor(s)
-> Fast-Link to Google Maps
-> Lists Members
-> Shows business hours
+> Lists the current supervisor(s)  
+> Fast-Link to Google Maps  
+> Lists Members  
+> Shows business hours  
 
 4. Gallery
 > Shows images from past events and partys
 
 5. Contact
-> Shows an contact form to ask questions or to apply for the club
+> Shows an contact form to ask questions or to apply for the club  
 > Contact form to report an bug
 
 6. Settings
-> To change the stylesheet ("theme") & overall the appearance of the app
+> To change the stylesheet ("theme") & overall the appearance of the app  
 > Contact form to report an bug
 
 7. About
-> Shows our **G**eneral **D**ata **P**rotection **R**egulation
-> Shows who made the app
+> Shows our **G**eneral **D**ata **P**rotection **R**egulation  
+> Shows who made the app  
 > Contact form to repurt an bug
 
 8. Admin Login
