@@ -42,7 +42,7 @@ App for Students at the *HS-Merseburg* for the club *Wärmi*.
 7. About
 > Shows our **G**eneral **D**ata **P**rotection **R**egulation  
 > Shows who made the app  
-> Contact form to repurt an bug
+> Contact form to report an bug
 
 8. Admin Login
 > To live edit stuff in the app
