@@ -9,8 +9,7 @@ App for Students at the *HS-Merseburg* for the club *Wärmi*.
 **Listed in no special order**
 
 1. *Events* 
-> All events from the past, the future and planend can be checked out here
-
+> All events from the past, the future and planend can be checked out here  
 > The eventdetails can also be found here
 
 2. *Products and prices*
