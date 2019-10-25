@@ -1,4 +1,4 @@
-# wapp
+# Project Wärmi - App | wapp_
 
 ## TL:DR
 
