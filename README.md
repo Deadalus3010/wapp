@@ -1,26 +1,49 @@
 # wapp
 
-# # TL:DR
+## TL:DR
 
-App for Students at the "HS-Merseburg" for the club "Wärmi".
+App for Students at the *HS-Merseburg* for the club *Wärmi*.
 
-# # # Features:
+### Features:
 
-1. Lists all Events from the past&future 
-2. Lists all products and prices
-..* + member discounts
-..* like so:
+**Listed in no special order**
 
-| Price not Member | Price Member  |
-| ---------------- | ------------- |
-| col 3 is         | right-aligned |
-| col 2 is         | centered      |
-| zebra stripes    | are neat      |
+1. *Events* 
+> All events from the past, the future and planend can be checked out here
+> The eventdetails can also be found here
 
+2. *Products and prices*
+> Lists all Products with and without the Member discounts
+> like so: **(Sample Values)**
 
-> Blockquotes are very handy in email to emulate reply text.
-> This line is part of the same quote.
+| Product          | Price Normal  | Price Member  |
+| ---------------- | ------------- | ------------- |
+| Becks            | 1.50€         |  1.20€        |
+| Fassbier         | 2€            |  1.50€        |
+| Cola             | 2.20€         |  2€           |
 
-Quote break.
+3. *Wärmi* itself
+> Lists the current supervisor(s)
+> Fast-Link to Google Maps
+> Lists Members
+> Shows business hours
 
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
+4. Gallery
+> Shows images from past events and partys
+
+5. Contact
+> Shows an contact form to ask questions or to apply for the club
+> Contact form to report an bug
+
+6. Settings
+> To change the stylesheet ("theme") & overall the appearance of the app
+> Contact form to report an bug
+
+7. About
+> Shows our **G**eneral **D**ata **P**rotection **R**egulation
+> Shows who made the app
+> Contact form to repurt an bug
+
+8. Admin Login
+> To live edit stuff in the app
+
