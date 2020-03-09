@@ -37,7 +37,7 @@ export default class Waermi extends React.Component {
   state = {
     index: 0,
     routes: [                                             
-      { key: 'home',      title: 'Home',            icon: <FontAwesome style={{fontSize: 32}} icon={BrandIcons.github}></FontAwesome>,    color: '#3F51B5' },
+      { key: 'home',      title: 'Home',            icon: 'caretdown',    color: '#3F51B5' },
       { key: 'news',      title: 'News',            icon: 'album',          color: '#009688' },
       { key: 'products',  title: 'Produkte',        icon: 'history',        color: '#795548' },
       { key: 'settings',  title: 'Einstellungen',   icon: 'shopping-cart',  color: '#607D8B' },
