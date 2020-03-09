@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 
-class SettingsScreen extends React.Component {
+class HomeScreen extends React.Component {
     render() {
       return (
         <View style={{ flex: 0, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>Settings!</Text>
+          <Text>Home!</Text>
           <Button
-            title="Go to Home"
-            onPress={() => this.props.navigation.navigate('Home')}
+            title="Go to Settings"
+            onPress={() => this.props.navigation.navigate('SettingsScreen')}
           />
         </View>
       );
     }
   }
 
-module.exports.SettingsScreen = SettingsScreen; 
+module.exports.HomeScreen     = HomeScreen;
