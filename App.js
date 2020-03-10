@@ -29,7 +29,12 @@ const SettingsRoute = ()  => <View><SettingsScreen/></View>;
   #
   #     [Nav]
   #
-  #     Setzt Elemente auf den Bildschirm     
+  #     Setzt Elemente auf den Bildschirm 
+  #
+  #    { key: 'home',      title: 'Home',            icon: 'alpha-h-box',    color: '#3F51B5' },
+  #    { key: 'news',      title: 'News',            icon: 'alpha-n-box',    color: '#009688' },
+  #    { key: 'products',  title: 'Produkte',        icon: 'alpha-p-box',    color: '#795548' },
+  #    { key: 'settings',  title: 'Einstellungen',   icon: 'alpha-e-box',    color: '#607D8B' },   
   #
   *****************/ 
 
@@ -37,10 +42,10 @@ export default class Waermi extends React.Component {
   state = {
     index: 0,
     routes: [                                             
-      { key: 'home',      title: 'Home',            icon: 'caretdown',    color: '#3F51B5' },
-      { key: 'news',      title: 'News',            icon: 'album',          color: '#009688' },
-      { key: 'products',  title: 'Produkte',        icon: 'history',        color: '#795548' },
-      { key: 'settings',  title: 'Einstellungen',   icon: 'shopping-cart',  color: '#607D8B' },
+      { key: 'home',      title: 'Home',            icon: 'alpha-h-box',    color: '#3F51B5' },
+      { key: 'news',      title: 'News',            icon: 'alpha-n-box',    color: '#009688' },
+      { key: 'products',  title: 'Produkte',        icon: 'alpha-p-box',    color: '#795548' },
+      { key: 'settings',  title: 'Einstellungen',   icon: 'alpha-e-box',    color: '#607D8B' },
     ]
   }
 

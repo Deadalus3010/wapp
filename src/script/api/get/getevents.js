@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity} from "react-native";
 
-export default class getDrinks extends React.Component {
+export default class getEvents extends React.Component {
 
   _isMounted = false;
 
@@ -47,7 +47,7 @@ export default class getDrinks extends React.Component {
 
   componentDidMount(){
     this._isMounted = true;
-    fetch("https://waermiapi.platincore.de/api/drinks/list")
+    fetch("https://waermiapi.platincore.de/api/events/list")
     .then(response => response.json())
     .then((responseJson)=> {
       this.setState({
@@ -119,7 +119,7 @@ export default class getDrinks extends React.Component {
       )}
 }
 
-module.exports.getDrinks     = getDrinks;
+module.exports.getEvents     = getEvents;
 
 /*****************  
 #
