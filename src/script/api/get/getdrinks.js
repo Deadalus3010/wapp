@@ -47,7 +47,7 @@ export default class ProductsScreen extends React.Component {
 
   componentDidMount(){
     this._isMounted = true;
-    fetch("http://144.76.114.183:3000/api/drinks/list")
+    fetch("https://wearmiapi.platincore.de/api/drinks/list")
     .then(response => response.json())
     .then((responseJson)=> {
       this.setState({
