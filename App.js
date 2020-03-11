@@ -42,9 +42,9 @@ export default class Waermi extends React.Component {
   state = {
     index: 0,
     routes: [                                             
-      { key: 'home',      title: 'Home',            icon: 'alpha-h-box',    color: '#3F51B5' },
-      { key: 'news',      title: 'News',            icon: 'alpha-n-box',    color: '#009688' },
-      { key: 'products',  title: 'Sortiment',        icon: 'alpha-s-box',    color: '#795548' },
+      { key: 'home',      title: 'Veranstaltung',            icon: 'alpha-v-box',    color: '#3F51B5' },
+      { key: 'news',      title: 'Sortiment',            icon: 'alpha-s-box',    color: '#009688' },
+      { key: 'products',  title: 'Mitglieder',        icon: 'alpha-m-box',    color: '#795548' },
       { key: 'settings',  title: 'Einstellungen',   icon: 'alpha-e-box',    color: '#607D8B' },
     ]
   }
