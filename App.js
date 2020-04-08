@@ -22,7 +22,7 @@ const { ContactScreen }   =    require('./src/script/screens/contactscreen.js');
 export default class Waermi extends React.Component {
   state = {
     index: 0,
-    routes: [                                             
+    routes: [                                            
       { key: 'news',     title: 'News',      icon: 'alpha-n-box',    color: '#3F51B5' },
       { key: 'event',    title: 'Events',    icon: 'alpha-e-box',    color: '#009688' },
       { key: 'products', title: 'Produkte',  icon: 'alpha-p-box',    color: '#795548' },
