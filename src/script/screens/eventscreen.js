@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text } from 'react-native';
+import { Version} from 'C:/Users/Nicol/Documents/GitHub/wapp/App.js'
 
 export default class EventScreen extends Component {
   render() {
@@ -36,6 +37,11 @@ export default class EventScreen extends Component {
             </Text>
           </View>
         </ScrollView>
+        <View style={styles.info}>
+          <Text style={{ color: 'yellow', fontSize: 6 }}>
+            {Version}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -48,5 +54,9 @@ const styles = StyleSheet.create({
     height: '100%',
     flexDirection: 'column',
     backgroundColor: 'black',
+  },
+  info: {
+    alignItems: 'flex-end',
+    textAlign: 'center',
   }
 });

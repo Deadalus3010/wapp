@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { View, ScrollView, SafeAreaView, Text, StyleSheet, TouchableOpacity, Image, Button } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { Version} from 'C:/Users/Nicol/Documents/GitHub/wapp/App.js'
 
 const { Monatsspecial }   =   require('./productscreen/monatsspecial.js');
 const { Getränke }        =   require('./productscreen/getraenke.js');
@@ -41,8 +42,8 @@ class HomeScreen extends React.Component {
         </View>
         <View style={styles.info}>
           <Text style={{ color: 'yellow', fontSize: 6 }}>
-            Nicolas Krieg und Lucas Oehler
-            </Text>
+            {Version}
+          </Text>
         </View>
       </View>
     )

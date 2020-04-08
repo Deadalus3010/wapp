@@ -133,7 +133,6 @@ export default class getBeer extends React.Component {
               data= {this.state.dataSource}
               ItemSeparatorComponent = {this.FlatListItemSeparator}
               renderItem= {item=> this.renderItem(item)}
-             // renderItem={({item}) => <ListItem title={'${item}'}/>}
               keyExtractor= {item=>item.name.toString()}
           />
         </View>
@@ -172,6 +171,5 @@ const styles = StyleSheet.create({
     margin: 5,
     backgroundColor: "black",
     height:60,
-
-   }
+   },
 });
