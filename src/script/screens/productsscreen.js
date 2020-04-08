@@ -27,7 +27,7 @@ class HomeScreen extends React.Component {
           <TouchableOpacity onPress={() => this.props.navigation.navigate('Getränke')}>
             <View style={styles.button_feat}>
               <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
-                Getränke (Test)
+                Getränke 
             </Text>
             </View>
           </TouchableOpacity>

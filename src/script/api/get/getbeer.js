@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity} from "react-native";
+import {StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity,ListItem} from "react-native";
 
 export default class getBeer extends React.Component {
 
@@ -75,7 +75,7 @@ export default class getBeer extends React.Component {
       <View style={{
         height: .5,
         width:"100%",
-        backgroundColor:"rgba(0,0,0,0.5)",  //  # Und hier kann man die Farbe des Trennstriches verändern
+        backgroundColor:"black",  //  # Und hier kann man die Farbe des Trennstriches verändern
         }}
       />
     );
@@ -98,16 +98,21 @@ export default class getBeer extends React.Component {
 
   renderItem=(data)=>
     <TouchableOpacity style={styles.list}>
-      <Text>
-          {/*}
-          #
-          #   Eigentlich sollten hier mal die Items schön dargestellt werden, aber ich kam leider zu keiner Lösung
-          #
-          #style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} 
-          {*/}
-
-          {data.item.name} {data.item.size}l {data.item.price}€
-       </Text>
+      <View style={{flex:2}}>
+        <Text style={{color:'yellow',fontSize:20}}>
+          {data.item.name}
+        </Text>
+      </View>
+      <View style={{flex:1,alignItems:"flex-end"}}>
+        <Text style={{color:'yellow',fontSize:20}}>
+          {data.item.size}l
+        </Text>
+      </View>
+      <View style={{flex:1,alignItems:"flex-end",paddingRight:10}}>
+        <Text style={{color:'yellow',fontSize:20}}>
+          {data.item.price}€
+        </Text>
+      </View>
     </TouchableOpacity>    
     render(){
       if(this.state.loading){
@@ -128,6 +133,7 @@ export default class getBeer extends React.Component {
               data= {this.state.dataSource}
               ItemSeparatorComponent = {this.FlatListItemSeparator}
               renderItem= {item=> this.renderItem(item)}
+             // renderItem={({item}) => <ListItem title={'${item}'}/>}
               keyExtractor= {item=>item.name.toString()}
           />
         </View>
@@ -149,8 +155,8 @@ module.exports.getBeer     = getBeer;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
-    backgroundColor: "#fff"
+    flex: 1,
+    backgroundColor: "black"
    },
   loader:{
     flex: 0,
@@ -158,11 +164,14 @@ const styles = StyleSheet.create({
     margin: 0,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff"
+    backgroundColor: "black"
    },
   list:{
+    flexDirection: "row",
     paddingVertical: 4,
     margin: 5,
-    backgroundColor: "#fff"
+    backgroundColor: "black",
+    height:60,
+
    }
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity} from "react-native";
+import { StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity } from "react-native";
 
 export default class getAFG extends React.Component {
 
@@ -11,13 +11,13 @@ export default class getAFG extends React.Component {
   #
   #     Setzt Elemente auf den Bildschirm     
   #
-  *****************/ 
+  *****************/
 
   static navigationOptions = ({ navigation }) => {
     return {
       title: "Source Listing",
-      headerStyle: {backgroundColor: "#fff"},
-      headerTitleStyle: {textAlign: "center",flex: 1}
+      headerStyle: { backgroundColor: "#fff" },
+      headerTitleStyle: { textAlign: "center", flex: 1 }
     };
   };
 
@@ -27,13 +27,13 @@ export default class getAFG extends React.Component {
   #
   #          
   #
-  *****************/  
+  *****************/
 
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
-      dataSource:[]
+      dataSource: []
     };
   }
 
@@ -43,19 +43,19 @@ export default class getAFG extends React.Component {
   #
   #     Hier wird die API angegeben, mit der alle Inhalte abgefragt werden können
   #
-  *****************/ 
+  *****************/
 
-  componentDidMount(){
+  componentDidMount() {
     this._isMounted = true;
     fetch("https://waermiapi.platincore.de/api/drinks/afg")
-    .then(response => response.json())
-    .then((responseJson)=> {
-      this.setState({
-        loading: false,
-        dataSource: responseJson
+      .then(response => response.json())
+      .then((responseJson) => {
+        this.setState({
+          loading: false,
+          dataSource: responseJson
+        })
       })
-    })
-    .catch(error=>console.log(error)) //Fehler catching
+      .catch(error => console.log(error)) //Fehler catching
   }
 
   componentWillUnmount() {
@@ -68,15 +68,15 @@ export default class getAFG extends React.Component {
   #
   #     Der "Trennstrich" zwischen den einzelnen Auflistungen wird hier initialisiert
   #
-  *****************/ 
+  *****************/
 
   FlatListItemSeparator = () => {
     return (
       <View style={{
         height: .5,
-        width:"100%",
-        backgroundColor:"rgba(0,0,0,0.5)",  //  # Und hier kann man die Farbe des Trennstriches verändern
-        }}
+        width: "100%",
+        backgroundColor: "rgba(0,0,0,0.5)",  //  # Und hier kann man die Farbe des Trennstriches verändern
+      }}
       />
     );
   }
@@ -94,18 +94,31 @@ export default class getAFG extends React.Component {
   #     price:        string  data.item.price
   #     description:  string  data.item.description
   #
-  *****************/ 
+  *****************/
 
-  renderItem=(data)=>
+  renderItem = (data) =>
     <TouchableOpacity style={styles.list}>
-      <Text style={styles.lightText}>{data.item.name}</Text>                              
-      <Text style={styles.lightText}>{data.item.price}</Text>
-      <Text style={styles.lightText}>{data.item.description}</Text></TouchableOpacity>    
-    render(){
-      if(this.state.loading){
-      return( 
-        <View style={styles.loader}> 
-          <ActivityIndicator size="large" color="#0c9"/>
+      <View style={{ flex: 2 }}>
+        <Text style={{ color: 'yellow', fontSize: 20 }}>
+          {data.item.name}
+        </Text>
+      </View>
+      <View style={{ flex: 1, alignItems: "flex-end" }}>
+        <Text style={{ color: 'yellow', fontSize: 20 }}>
+          {data.item.size}l
+        </Text>
+      </View>
+      <View style={{ flex: 1, alignItems: "flex-end", paddingRight: 10 }}>
+        <Text style={{ color: 'yellow', fontSize: 20 }}>
+          {data.item.price}€
+        </Text>
+      </View>
+    </TouchableOpacity>
+  render() {
+    if (this.state.loading) {
+      return (
+        <View style={styles.loader}>
+          <ActivityIndicator size="large" color="#0c9" />
           <Text>{"\n\n"}Fehler 404: Netzwerkfehler{"\n"}
 
           Bitte überprüfen Sie ihre Internetverbindung.{"\n"}
@@ -113,20 +126,22 @@ export default class getAFG extends React.Component {
 
           </Text>
         </View>
-      )}
-      return(
-        <View style={styles.container}>
-          <FlatList
-              data= {this.state.dataSource}
-              ItemSeparatorComponent = {this.FlatListItemSeparator}
-              renderItem= {item=> this.renderItem(item)}
-              keyExtractor= {item=>item.name.toString()}
-          />
-        </View>
-      )}
+      )
+    }
+    return (
+      <View style={styles.container}>
+        <FlatList
+          data={this.state.dataSource}
+          ItemSeparatorComponent={this.FlatListItemSeparator}
+          renderItem={item => this.renderItem(item)}
+          keyExtractor={item => item.name.toString()}
+        />
+      </View>
+    )
+  }
 }
 
-module.exports.getAFG     = getAFG;
+module.exports.getAFG = getAFG;
 
 /*****************  
 #
@@ -135,26 +150,29 @@ module.exports.getAFG     = getAFG;
 #     Hier geben wir eine Form (ein Style) an und definieren,
 #     wie die Daten ausgegeben werden sollen.
 #
-*****************/ 
+*****************/
 
 <View style={{ flex: 0, justifyContent: 'center', alignItems: 'center' }}></View>
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
-    backgroundColor: "#fff"
-   },
-  loader:{
+    flex: 1,
+    backgroundColor: "black"
+  },
+  loader: {
     flex: 0,
     height: 850,
     margin: 0,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff"
-   },
-  list:{
+    backgroundColor: "black"
+  },
+  list: {
+    flexDirection: "row",
     paddingVertical: 4,
     margin: 5,
-    backgroundColor: "#fff"
-   }
+    backgroundColor: "black",
+    height: 80,
+
+  }
 });
