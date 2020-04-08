@@ -1,29 +1,10 @@
 import * as React from 'react';
-import { View } from 'react-native';
-import { BottomNavigation, Text } from 'react-native-paper';
-import FontAwesome, { SolidIcons, RegularIcons, BrandIcons } from 'react-native-fontawesome';
+import { BottomNavigation } from 'react-native-paper';
 
-const { HomeScreen }      =   require('./src/script/screens/homescreen.js');
 const { NewsScreen }      =   require('./src/script/screens/newsscreen.js');
-const { ProductsScreen }  =   require('./src/script/screens/productsscreen'); 
-const { SettingsScreen }  =   require('./src/script/screens/settingsscreen');
-
-
-  /*****************  
-  #
-  #     [Variablen][Screen]
-  #
-  #     Hier werden Inhalte für die Hauptmenüs aus den dafür zuständigen Dateien geholt 
-  #
-  *****************/ 
-
-const HomeRoute = ()      => <View><HomeScreen/></View>;
-
-const NewsRoute = ()      => <View><NewsScreen/></View>;
-
-const ProductsRoute = ()  => <View><ProductsScreen/></View>;
-
-const SettingsRoute = ()  => <View><SettingsScreen/></View>;
+const { EventScreen }     =   require('./src/script/screens/eventscreen.js');
+const { ProductsScreen }  =   require('./src/script/screens/productsscreen.js'); 
+const { ContactScreen }   =    require('./src/script/screens/contactscreen.js');
 
   /*****************  
   #
@@ -42,10 +23,10 @@ export default class Waermi extends React.Component {
   state = {
     index: 0,
     routes: [                                             
-      { key: 'home',      title: 'Home',            icon: 'alpha-h-box',    color: '#3F51B5' },
-      { key: 'news',      title: 'News',            icon: 'alpha-n-box',    color: '#009688' },
-      { key: 'products',  title: 'Sortiment',        icon: 'alpha-s-box',    color: '#795548' },
-      { key: 'settings',  title: 'Einstellungen',   icon: 'alpha-e-box',    color: '#607D8B' },
+      { key: 'news',     title: 'News',      icon: 'alpha-n-box',    color: '#3F51B5' },
+      { key: 'event',    title: 'Events',    icon: 'alpha-e-box',    color: '#009688' },
+      { key: 'products', title: 'Produkte',  icon: 'alpha-p-box',    color: '#795548' },
+      { key: 'contact',  title: 'Kontakt',   icon: 'alpha-k-box',    color: '#607D8B' },
     ]
   }
 
@@ -57,13 +38,19 @@ export default class Waermi extends React.Component {
   #
   #     Definiert die Bottomnavbar    
   #
+  #   _renderScene = BottomNavigation.SceneMap({
+  #     news:      NewsRoute,
+  #     event:     EventRoute,
+  #     products:  ProductsRoute,
+  #     contact:   ContactRoute,
+  #   });
   *****************/ 
 
   _renderScene = BottomNavigation.SceneMap({
-    home:     HomeRoute,
-    news:     NewsRoute,
-    products: ProductsRoute,
-    settings: SettingsRoute,
+    news:      NewsScreen,
+    event:     EventScreen,
+    products:  ProductsScreen,
+    contact:   ContactScreen,
   });
 
   /*****************  

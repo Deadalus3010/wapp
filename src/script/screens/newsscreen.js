@@ -5,7 +5,11 @@ class NewsScreen extends React.Component {
     render() {
       return (
         <View style={{ flex: 0, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>News!</Text>
+          <Text>Hallo, du bist gerade bei den News!</Text>
+          <Button
+            title="Go to Settings"
+            onPress={() => this.props.navigation.navigate('SettingsScreen')}
+          />
         </View>
       );
     }

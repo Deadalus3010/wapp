@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity} from "react-native";
 
-export default class getSpecials extends React.Component {
+export default class getBeer extends React.Component {
 
   _isMounted = false;
 
@@ -47,7 +47,7 @@ export default class getSpecials extends React.Component {
 
   componentDidMount(){
     this._isMounted = true;
-    fetch("https://waermiapi.platincore.de/api/specials/list")
+    fetch("https://waermiapi.platincore.de/api/drinks/beer")
     .then(response => response.json())
     .then((responseJson)=> {
       this.setState({
@@ -98,9 +98,17 @@ export default class getSpecials extends React.Component {
 
   renderItem=(data)=>
     <TouchableOpacity style={styles.list}>
-      <Text style={styles.lightText}>{data.item.name}</Text>                              
-      <Text style={styles.lightText}>{data.item.price}</Text>
-      <Text style={styles.lightText}>{data.item.description}</Text></TouchableOpacity>    
+      <Text>
+          {/*}
+          #
+          #   Eigentlich sollten hier mal die Items schön dargestellt werden, aber ich kam leider zu keiner Lösung
+          #
+          #style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }} 
+          {*/}
+
+          {data.item.name} {data.item.size}l {data.item.price}€
+       </Text>
+    </TouchableOpacity>    
     render(){
       if(this.state.loading){
       return( 
@@ -126,7 +134,7 @@ export default class getSpecials extends React.Component {
       )}
 }
 
-module.exports.getSpecials     = getSpecials;
+module.exports.getBeer     = getBeer;
 
 /*****************  
 #

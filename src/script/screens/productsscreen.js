@@ -1,44 +1,74 @@
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, StatusBar, Button, TouchableOpacity, Image } from 'react-native';
+import React from 'react';
+import { Component } from 'react';
+import { View, ScrollView, SafeAreaView, Text, StyleSheet, TouchableOpacity, Image, Button } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-class ProductsScreen extends React.Component {
-    render() {
-      return (
+const { Monatsspecial }   =   require('./productscreen/monatsspecial.js');
+const { Getränke }        =   require('./productscreen/getraenke.js');
+const { getSnacks }       =   require('../api/get/getsnacks.js');
+
+class HomeScreen extends React.Component {
+  render() {
+    return (
+      <View style={styles.screen}>
+        <View style={styles.topic}>
+          <Image style={styles.picture}
+            source={require('../../img/Studentenclub_Wärmetauscher2.png')} />
+        </View>
         <View style={styles.bot}>
-          <TouchableOpacity onPress={() => console.log('Die Getränke')}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Monatsspecial')}  >
             <View style={styles.button_feat}>
-              <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}
-              >Getränke
-              </Text>
+              <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
+                Monatsspecial
+            </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Getränke')}>
+            <View style={styles.button_feat}>
+              <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
+                Getränke (Test)
+            </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Snacks')}>
+            <View style={styles.button_feat}>
+              <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
+                Snacks
+            </Text>
             </View>
           </TouchableOpacity>
         </View>
-      );
-    }
+        <View style={styles.info}>
+          <Text style={{ color: 'yellow', fontSize: 6 }}>
+            Nicolas Krieg und Lucas Oehler
+            </Text>
+        </View>
+      </View>
+    )
   }
-
-module.exports.ProductsScreen     = ProductsScreen;
+}
+module.exports.HomeScreen =  HomeScreen; 
 
 const b_color_background = 'black'
 const b_color_text = 'yellow'
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    height: '100%',
     flexDirection: 'column',
     backgroundColor: 'black',
   },
   topic: {
-    flex: 1,
-    backgroundColor: 'black',
+    flex: 0.3,
     alignItems: 'center',
-    padding: 20,
+    padding: 30,
   },
   picture: {
     width: 300,
-    height: 120
+    height: 120,
   },
   bot: {
-    flex: 4,
+    flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
     padding: 40,
@@ -56,8 +86,29 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   info: {
-    flex: 0.08,
     alignItems: 'flex-end',
     textAlign: 'center',
   }
 });
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Getränke: Getränke,
+    Monatsspecial: Monatsspecial,
+    Snacks: getSnacks,
+  },
+  {
+    initialRouteName: "Home",
+    headerMode: 'none',
+  }
+);
+
+const AppContainer = createAppContainer(AppNavigator);
+export default class ProductsScreen extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
+
+module.exports.ProductsScreen     = ProductsScreen;

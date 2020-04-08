@@ -87,7 +87,14 @@ export default class getSnacks extends React.Component {
   #
   #     Die angeforderten API-Daten werden hier gefiltert und dargestellt.
   #
-  *****************/ 
+  #     Mögliche API Calls:
+  #
+  #     name:         string  data.item.name
+  #     size:         string  data.item.size
+  #     price:        string  data.item.price
+  #     description:  string  data.item.description
+  #
+  *****************/  
 
   renderItem=(data)=>
     <TouchableOpacity style={styles.list}>
