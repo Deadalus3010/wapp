@@ -97,8 +97,8 @@ export default class getLongdrink extends React.Component {
   *****************/
 
   renderItem = (data) =>
-    <TouchableOpacity style={styles.list}>
-      <View style={{ flex: 2.01 }}>                      {/* Krumme Zahl da ein Name sonst einen Umbruch macht */}
+    <TouchableOpacity style={styles.list} >
+      <View style={{ flex: 2.01 }}>
         <Text style={{ color: 'yellow', fontSize: 20 }}>
           {data.item.name}
         </Text>

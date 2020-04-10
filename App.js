@@ -7,7 +7,7 @@ const { ProductsScreen }  =   require('./src/script/screens/productsscreen.js');
 const { ContactScreen }   =    require('./src/script/screens/contactscreen.js');
 
 
-export const Version = "Version 0,5 (Nicolas Krieg u. Lucas Oehler)";
+export const Version = "Version 0.5 (Nicolas Krieg u. Lucas Oehler)";
 
 
   /*****************  

@@ -15,7 +15,7 @@ class HomeScreen extends Component {
       return (
         <View style={styles.screen}>
           <ScrollView contentContainerStyle={styles.bot_scroll}>
-            <View style={{ paddingBottom: sort_drinks_pad, paddingHorizontal: sort_drinks_pad }}>
+            <View style={{ paddingBottom: sort_drinks_pad, paddingHorizontal: sort_drinks_pad }}> {/* Abstand nach oben wird bei einem einfachen "padding" sonst zu groß */}
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Beer')}>
                 <View style={styles.button_feat}>
                   <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
