@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text } from 'react-native';
-import { Version } from 'C:/Users/Nicol/Documents/GitHub/wapp/App.js'
+import { Version} from '../../../App.js';
 
 export default class EventScreen extends Component {
   render() {

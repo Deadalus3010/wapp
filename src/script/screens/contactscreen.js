@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Text, View, StyleSheet, Image } from 'react-native';
-import { Version} from 'C:/Users/Nicol/Documents/GitHub/wapp/App.js'
+import { Version} from '../../../App.js';
 
 class ContactScreen extends React.Component {
   render() {
