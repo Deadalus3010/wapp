@@ -92,9 +92,14 @@ export default class getCocktail extends React.Component {
   #     name:         string  data.item.name
   #     size:         string  data.item.size
   #     price:        string  data.item.price
+  #     afg:          bool    data.item.afg
+  #     beer:         bool    data.item.beer
+  #     cocktail:     bool    data.item.cocktail
+  #     longdrink:    bool    data.item.longdrink
+  #     shot:         bool    data.item.shot
   #     description:  string  data.item.description
   #
-  *****************/  
+  *****************/ 
 
   renderItem=(data)=>
     <TouchableOpacity style={styles.list}>

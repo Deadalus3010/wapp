@@ -90,11 +90,15 @@ export default class getEvents extends React.Component {
   #     Mögliche API Calls:
   #
   #     name:         string  data.item.name
-  #     size:         string  data.item.size
-  #     price:        string  data.item.price
-  #     description:  string  data.item.description
+  #     date:         string  data.item.date
+  #     time:         string  data.item.time
+  #     special1:     string  data.item.special1 
+  #     special2:     string  data.item.special2
+  #     special3:     string  data.item.special3
+  #     special4:     string  data.item.special4
+  #     act:          string  data.item.act
   #
-  *****************/ 
+  *****************/
 
   renderItem=(data)=>
     <TouchableOpacity style={styles.list}>

@@ -90,7 +90,6 @@ export default class getSnacks extends React.Component {
   #     Mögliche API Calls:
   #
   #     name:         string  data.item.name
-  #     size:         string  data.item.size
   #     price:        string  data.item.price
   #     description:  string  data.item.description
   #
