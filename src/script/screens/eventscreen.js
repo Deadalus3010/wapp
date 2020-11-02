@@ -104,7 +104,7 @@ export default class EventScreen extends React.Component {
         <View style={{ flex: 0.15, alignItems: 'center', paddingVertical: 20 }}>
           <Text style={{ fontSize: 30, color: 'yellow', textDecorationLine: 'underline' }}>
             Nächste Veranstaltung
-      </Text>
+          </Text>
         </View>
         <View style={{ flex: 0.40, }}>
           <View style={{ alignItems: 'center' }}>
@@ -145,7 +145,7 @@ export default class EventScreen extends React.Component {
         <View style={{ flex: 0.15, alignItems: 'center', paddingBottom: 20, paddingTop: 30 }}>
           <Text style={{ fontSize: 30, color: 'yellow', textDecorationLine: 'underline' }}>
             Kommende Veranstaltung
-      </Text>
+        </Text>
         </View>
         <View style={{ flex: 0.40, }}>
           <View style={{ paddingVertical: 20, paddingHorizontal: 10, flexDirection: "row", alignItems: 'flex-start', width: '100%' }}>

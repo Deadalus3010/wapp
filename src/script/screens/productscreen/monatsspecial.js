@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Text } from 'react-native';
+import { View, ScrollView, StyleSheet, Text, BackHandler, TouchableOpacity } from 'react-native';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 
 export default class Monatsspecial extends Component {
     constructor(props) {
       super(props);
+      this.handleBackButtonClick = this.handleBackButtonClick.bind(this); //Test
+
       this.state = {
         //defauilt value of the date time
         date: '',
@@ -23,9 +26,23 @@ export default class Monatsspecial extends Component {
           month,
       });
     }
+    handleBackButtonClick() {               //Test
+      this.props.navigation.goBack(null);
+      return true;
+    }
     render() {
       return (
         <View style={styles.screen}>
+          <View style={{backgroundColor: 'black', paddingTop:10, paddingLeft:20}}>
+            <View style={{backgroundColor:'black',  width:'30%'}}>
+              <TouchableOpacity onPress={this.handleBackButtonClick} style={styles.backhandler_optic} >
+                <Icons name={'arrow-back'} size={30} color='yellow'/>
+                <Text style={{ color:'yellow'}}>
+                  Zurück
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
           <ScrollView contentContainerStyle={styles.bot_scroll_special}>
             <View style={styles.topic_special}>
               <Text
@@ -33,9 +50,9 @@ export default class Monatsspecial extends Component {
                 {this.state.date}
               </Text>
             </View>
-            <View style={{ paddingTop: 150, alignItems: 'center' }}>
+            <View style={{ paddingTop: 100, alignItems: 'center' }}>
               <Text style={{ color: b_color_text, fontSize: 40 }}>
-                Whiskey-Cola
+                Mexikaner
               </Text>
             </View>
             <View style={{ padding: 20, alignItems: 'center' }}>
@@ -45,7 +62,7 @@ export default class Monatsspecial extends Component {
             </View>
             <View style={{ alignItems: 'center' }}>
               <Text style={{ color: 'red', fontSize: 50 }}>
-                2,50€
+                1,50€
               </Text>
             </View>
           </ScrollView>
@@ -53,7 +70,7 @@ export default class Monatsspecial extends Component {
       )
     }
 }
-module.exports.Monatsspecial     = Monatsspecial; 
+module.exports.Monatsspecial            = Monatsspecial; 
 
   
 const b_color_background = 'black'
@@ -76,6 +93,18 @@ const styles = StyleSheet.create({
   bot_scroll_special: {
     justifyContent: 'space-around',
     padding: 20,
-    paddingTop: 40,
+    paddingTop: 20,
+  },
+  backhandler_optic:{
+    lineHeight: 15,
+    borderColor: 'yellow',
+    flexDirection:'row',
+    alignItems: 'center',
+    textAlign: 'center',
+    backgroundColor: b_color_background,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: 'yellow',
+    justifyContent: 'center'
   }
 });

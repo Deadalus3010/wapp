@@ -1,5 +1,8 @@
 import React from "react";
-import {StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity,ListItem} from "react-native";
+import {StyleSheet, View, ActivityIndicator, FlatList, 
+        Text, TouchableOpacity,ListItem, BackHandler} from "react-native";
+import Icons from 'react-native-vector-icons/MaterialIcons';
+
 
 export default class getBeer extends React.Component {
 
@@ -31,11 +34,26 @@ export default class getBeer extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleBackButtonClick = this.handleBackButtonClick.bind(this); //Wichtig!!!
     this.state = {
       loading: true,
       dataSource:[]
     };
   }
+
+   /*****************  
+  #
+  #     [OnPressBack]
+  #
+  #    das ist die augelagerte OnPress funktion, für den "Zurück Button"
+  #
+  *****************/ 
+ 
+  handleBackButtonClick(){                    
+    this.props.navigation.navigate('Back');
+    return true;
+  }
+
 
   /*****************  
   #
@@ -102,12 +120,13 @@ export default class getBeer extends React.Component {
   *****************/ 
 
   renderItem=(data)=>
-    <TouchableOpacity style={styles.list}>
-      <View style={{flex:2}}>
+  <View>
+    <View style={styles.list}>
+      <TouchableOpacity style={{flex:2}}>
         <Text style={{color:'yellow',fontSize:20}}>
           {data.item.name}
         </Text>
-      </View>
+      </TouchableOpacity>
       <View style={{flex:1,alignItems:"flex-end"}}>
         <Text style={{color:'yellow',fontSize:20}}>
           {data.item.size}l
@@ -118,7 +137,8 @@ export default class getBeer extends React.Component {
           {data.item.price}€
         </Text>
       </View>
-    </TouchableOpacity>    
+    </View> 
+    </View>   
     render(){
       if(this.state.loading){
       return( 
@@ -177,4 +197,16 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     height:60,
    },
+   backhandler_optic:{
+     lineHeight: 15,
+     borderColor: 'yellow',
+     flexDirection:'row',
+     alignItems: 'center',
+     textAlign: 'center',
+     backgroundColor: 'black',
+     borderRadius: 15,
+     borderWidth: 1,
+     borderColor: 'yellow',
+     justifyContent: 'center'
+   }
 });

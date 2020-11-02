@@ -4,10 +4,11 @@ import { BottomNavigation } from 'react-native-paper';
 const { NewsScreen }      =   require('./src/script/screens/newsscreen.js');
 const { EventScreen }     =   require('./src/script/screens/eventscreen.js');
 const { ProductsScreen }  =   require('./src/script/screens/productsscreen.js'); 
-const { ContactScreen }   =    require('./src/script/screens/contactscreen.js');
+const { ContactScreen }   =   require('./src/script/screens/contactscreen.js');
+const { MemberScreen }    =   require('./src/script/screens/memberscreen.js');
 
 
-export const Version = "Version 0.5 (Nicolas Krieg u. Lucas Oehler)";
+export const Version = "Alpha 2 (Nicolas Krieg u. Lucas Oehler)";
 
 
   /*****************  
@@ -30,7 +31,9 @@ export default class Waermi extends React.Component {
       { key: 'news',     title: 'News',      icon: 'alpha-n-box',    color: 'orange',  },
       { key: 'event',    title: 'Events',    icon: 'alpha-e-box',    color: '#ff6666' },
       { key: 'products', title: 'Produkte',  icon: 'alpha-p-box',    color: '#D1D63B' },
+      { key: 'member',   title: 'Mitglieder', icon: 'alpha-m-box',    color: 'blue'},
       { key: 'contact',  title: 'Kontakt',   icon: 'alpha-k-box',    color: 'grey' },
+      
     ]
   }
   activeColor= 'yellow'
@@ -56,6 +59,7 @@ export default class Waermi extends React.Component {
     event:     EventScreen,
     products:  ProductsScreen,
     contact:   ContactScreen,
+    member:    MemberScreen,
   });
 
   /*****************  

@@ -102,12 +102,12 @@ export default class getCocktail extends React.Component {
   *****************/ 
 
   renderItem = (data) =>
-    <TouchableOpacity style={styles.list}>
-      <View style={{ flex: 2 }}>
+    <View style={styles.list}>
+      <TouchableOpacity style={{ flex: 2 }}>
         <Text style={{ color: 'yellow', fontSize: 20 }}>
           {data.item.name}
         </Text>
-      </View>
+      </TouchableOpacity>
       <View style={{ flex: 1, alignItems: "flex-end" }}>
         <Text style={{ color: 'yellow', fontSize: 20 }}>
           {data.item.size}l
@@ -118,7 +118,7 @@ export default class getCocktail extends React.Component {
           {data.item.price}€
         </Text>
       </View>
-    </TouchableOpacity>
+    </View>
   render() {
     if (this.state.loading) {
       return (
