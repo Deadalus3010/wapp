@@ -142,7 +142,7 @@ const AppNavigator = createStackNavigator(
       Longdrinks: getLongdrink,
       Shots: getShots,
       AFG: getAFG,
-      Back: HomeScreen, 
+      
     },
     {
       initialRouteName: "Home",
