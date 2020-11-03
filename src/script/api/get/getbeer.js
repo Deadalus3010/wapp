@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet, View, ActivityIndicator, FlatList, 
         Text, TouchableOpacity,ListItem, BackHandler} from "react-native";
 import Icons from 'react-native-vector-icons/MaterialIcons';
-
+import { styleBackButton, Version, styleVersion } from '../../stylesheetcontainer'; 
 
 export default class getBeer extends React.Component {
 
@@ -50,7 +50,7 @@ export default class getBeer extends React.Component {
   *****************/ 
  
   handleBackButtonClick(){                    
-    this.props.navigation.navigate('Back');
+    this.props.navigation.goBack(null);
     return true;
   }
 
@@ -120,7 +120,6 @@ export default class getBeer extends React.Component {
   *****************/ 
 
   renderItem=(data)=>
-  <View>
     <View style={styles.list}>
       <TouchableOpacity style={{flex:2}}>
         <Text style={{color:'yellow',fontSize:20}}>
@@ -137,7 +136,6 @@ export default class getBeer extends React.Component {
           {data.item.price}€
         </Text>
       </View>
-    </View> 
     </View>   
     render(){
       if(this.state.loading){
@@ -154,12 +152,27 @@ export default class getBeer extends React.Component {
       )}
       return(
         <View style={styles.container}>
+          <View style={styleBackButton.position}>
+            <View style={styleBackButton.buttonSize}>
+              <TouchableOpacity onPress={this.handleBackButtonClick} style={styleBackButton.optic} > 
+                <Icons name={'arrow-back'} size={30} color='yellow'/>
+                <Text style={styleBackButton.text}>
+                  Zurück
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
           <FlatList
               data= {this.state.dataSource}
               ItemSeparatorComponent = {this.FlatListItemSeparator}
               renderItem= {item=> this.renderItem(item)}
               keyExtractor= {item=>item.name.toString()}
           />
+          <View style={styleVersion.info}>
+             <Text style={{ color: 'yellow', fontSize: 6 }}>
+               {Version}
+             </Text>
+          </View>
         </View>
       )}
 }
@@ -196,17 +209,5 @@ const styles = StyleSheet.create({
     margin: 5,
     backgroundColor: "black",
     height:60,
-   },
-   backhandler_optic:{
-     lineHeight: 15,
-     borderColor: 'yellow',
-     flexDirection:'row',
-     alignItems: 'center',
-     textAlign: 'center',
-     backgroundColor: 'black',
-     borderRadius: 15,
-     borderWidth: 1,
-     borderColor: 'yellow',
-     justifyContent: 'center'
    }
 });

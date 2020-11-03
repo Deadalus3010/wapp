@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text, ActivityIndicator, FlatList, TouchableOpacity } from 'react-native';
-import { Version } from '../../../App.js';
+import { Version } from '../stylesheetcontainer.js';
 
 
 export default class EventScreen extends React.Component {

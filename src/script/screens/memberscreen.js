@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Text, View, StyleSheet, Image } from 'react-native';
-import { Version } from '../../../App.js';
+import { Version } from '../stylesheetcontainer.js';
 
 class MemberScreen extends React.Component {
     render() {

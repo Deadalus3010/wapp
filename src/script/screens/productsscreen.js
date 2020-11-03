@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { View, ScrollView, SafeAreaView, Text, StyleSheet, TouchableOpacity, Image, Button } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { Version} from '../../../App.js';
+import { Version } from '../stylesheetcontainer.js';
 
 const { Monatsspecial }   =   require('./productscreen/monatsspecial.js');
 const { Getränke }        =   require('./productscreen/getraenke.js');

@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity } from "react-native";
+import Icons from 'react-native-vector-icons/MaterialIcons';
+import { styleBackButton, Version, styleVersion } from '../../../script/stylesheetcontainer.js';
 
 export default class getCocktail extends React.Component {
 
@@ -31,10 +33,24 @@ export default class getCocktail extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
     this.state = {
       loading: true,
       dataSource: []
     };
+  }
+
+  /*****************  
+ #
+ #     [OnPressBack]
+ #
+ #    das ist die augelagerte OnPress funktion, für den "Zurück Button"
+ #
+ *****************/
+
+  handleBackButtonClick() {
+    this.props.navigation.goBack(null);
+    return true;
   }
 
   /*****************  
@@ -99,7 +115,7 @@ export default class getCocktail extends React.Component {
   #     shot:         bool    data.item.shot
   #     description:  string  data.item.description
   #
-  *****************/ 
+  *****************/
 
   renderItem = (data) =>
     <View style={styles.list}>
@@ -135,12 +151,27 @@ export default class getCocktail extends React.Component {
     }
     return (
       <View style={styles.container}>
+        <View style={styleBackButton.position}>
+          <View style={styleBackButton.buttonSize}>
+            <TouchableOpacity onPress={this.handleBackButtonClick} style={styleBackButton.optic} >
+              <Icons name={'arrow-back'} size={30} color='yellow' />
+              <Text style={styleBackButton.text}>
+                Zurück
+               </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
         <FlatList
           data={this.state.dataSource}
           ItemSeparatorComponent={this.FlatListItemSeparator}
           renderItem={item => this.renderItem(item)}
           keyExtractor={item => item.name.toString()}
         />
+        <View style={styleVersion.info}>
+          <Text style={{ color: 'yellow', fontSize: 6 }}>
+            {Version}
+          </Text>
+        </View>
       </View>
     )
   }

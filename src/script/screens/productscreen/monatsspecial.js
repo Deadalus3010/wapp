@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text, BackHandler, TouchableOpacity } from 'react-native';
 import Icons from 'react-native-vector-icons/MaterialIcons';
+import { styleBackButton } from '../../../script/stylesheetcontainer.js'; 
 
 export default class Monatsspecial extends Component {
     constructor(props) {
       super(props);
-      this.handleBackButtonClick = this.handleBackButtonClick.bind(this); //Test
+      this.handleBackButtonClick = this.handleBackButtonClick.bind(this); 
 
       this.state = {
-        //defauilt value of the date time
+        //default value of the date time
         date: '',
       };
     }
@@ -26,18 +27,19 @@ export default class Monatsspecial extends Component {
           month,
       });
     }
-    handleBackButtonClick() {               //Test
+    handleBackButtonClick() {               
       this.props.navigation.goBack(null);
       return true;
     }
     render() {
       return (
         <View style={styles.screen}>
-          <View style={{backgroundColor: 'black', paddingTop:10, paddingLeft:20}}>
-            <View style={{backgroundColor:'black',  width:'30%'}}>
-              <TouchableOpacity onPress={this.handleBackButtonClick} style={styles.backhandler_optic} >
+          {/*Position muss hier etwas geändert werden, deshalb ein eigenständiges Padding */}
+          <View style={[styleBackButton.position,{paddingBottom: -10} ]}>
+            <View style={styleBackButton.buttonSize}>
+              <TouchableOpacity onPress={this.handleBackButtonClick} style={styleBackButton.optic} >
                 <Icons name={'arrow-back'} size={30} color='yellow'/>
-                <Text style={{ color:'yellow'}}>
+                <Text style={styleBackButton.text}>
                   Zurück
                 </Text>
               </TouchableOpacity>
@@ -95,16 +97,4 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 20,
   },
-  backhandler_optic:{
-    lineHeight: 15,
-    borderColor: 'yellow',
-    flexDirection:'row',
-    alignItems: 'center',
-    textAlign: 'center',
-    backgroundColor: b_color_background,
-    borderRadius: 15,
-    borderWidth: 1,
-    borderColor: 'yellow',
-    justifyContent: 'center'
-  }
 });

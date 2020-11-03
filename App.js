@@ -7,10 +7,6 @@ const { ProductsScreen }  =   require('./src/script/screens/productsscreen.js');
 const { ContactScreen }   =   require('./src/script/screens/contactscreen.js');
 const { MemberScreen }    =   require('./src/script/screens/memberscreen.js');
 
-
-export const Version = "Alpha 2 (Nicolas Krieg u. Lucas Oehler)";
-
-
   /*****************  
   #
   #     [Nav]

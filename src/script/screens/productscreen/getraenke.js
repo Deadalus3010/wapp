@@ -4,7 +4,7 @@ import { View, ScrollView, SafeAreaView, Text, StyleSheet, TouchableOpacity, Bac
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import  Icons  from 'react-native-vector-icons/MaterialIcons';
-//import { styles } from './monatsspecial';
+import { styleBackButton, Version, styleVersion } from '../../../script/stylesheetcontainer.js'; 
 
 const { getBeer }          =   require('../../api/get/getbeer.js');
 const { getCocktail }      =   require('../../api/get/getcocktail.js');
@@ -30,11 +30,11 @@ class HomeScreen_2 extends Component {
     render() {
       return (
         <View style={styles.screen}>
-          <View style={{backgroundColor: 'black', paddingVertical:10, paddingLeft:20}}>
-            <View style={{backgroundColor:'black',  width:'30%'}}>
-              <TouchableOpacity style={styles.backhandler_optic} > 
+          <View style={styleBackButton.position}> 
+            <View style={styleBackButton.buttonSize}>
+              <TouchableOpacity style={styleBackButton.optic} > 
                 <Icons name={'arrow-back'} size={30} color='yellow'/>
-                <Text style={{ color:'yellow'}}>
+                <Text style={styleBackButton.text}>
                   Zurück
                 </Text>
               </TouchableOpacity>
@@ -87,6 +87,11 @@ class HomeScreen_2 extends Component {
               </TouchableOpacity>
             </View>
           </ScrollView>
+          <View style={styleVersion.info}>
+             <Text style={{ color: 'yellow', fontSize: 6 }}>
+               {Version}
+             </Text>
+          </View>        
         </View>
       )
     }

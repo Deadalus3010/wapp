@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Text, View, StyleSheet, ScrollView } from 'react-native';
-import { Version} from '../../../App.js';
+import { Version } from '../stylesheetcontainer.js';
 
 class NewsScreen extends React.Component {
     render() {
