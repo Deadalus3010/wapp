@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Button, Text, View, StyleSheet, Image } from 'react-native';
-import { Version } from '../stylesheetcontainer.js';
+import React from 'react';
+import { Text, View } from 'react-native';
+import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
 
 class MemberScreen extends React.Component {
     render() {
       return (
-        <View style={styles.screen}>
+        <View style={stylescreen.all_background}>
           <View style={{flex:1, alignSelf:'center', justifyContent:'center'}}>
             <Text style={{color:'yellow', fontSize:30, textAlign:'center'}}>
               Hier kommen die Mitglieder hin
@@ -14,7 +14,7 @@ class MemberScreen extends React.Component {
               Wird in späteren Patches nachgeliefert
             </Text>
           </View>
-          <View style={styles.info}>
+          <View style={styleVersion.info}>
             <Text style={{ color: 'yellow', fontSize: 6 }}>
               {Version}
             </Text>
@@ -25,16 +25,3 @@ class MemberScreen extends React.Component {
   }
 
 module.exports.MemberScreen     = MemberScreen;
-
-const styles = StyleSheet.create({
-  screen: {
-    height: '100%',
-    flexDirection: 'column',
-    backgroundColor: 'black',
-  },
-  info: {
-    flex: 0.015,
-    alignItems: 'flex-end',
-    textAlign: 'center',
-  }
-})

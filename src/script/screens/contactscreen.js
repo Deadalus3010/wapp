@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Button, Text, View, StyleSheet, Image, ScrollView } from 'react-native';
-import { Version } from '../stylesheetcontainer.js';
+import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
 
 class ContactScreen extends React.Component {
   render() {
     return (
-      <View style={styles.screen}>
+      <View style={stylescreen.all_background}>
         <ScrollView>
         <View style={styles.topic}>
           <Image style={{ width: '85%' , height: 200 }}
@@ -69,7 +69,7 @@ class ContactScreen extends React.Component {
           </View>
         </View>
         </ScrollView>
-        <View style={styles.info}>
+        <View style={styleVersion.info}>
           <Text style={{ color: 'yellow', fontSize: 6 }}>
             {Version}
           </Text>
@@ -83,12 +83,6 @@ module.exports.ContactScreen = ContactScreen;
 const normaltextcolor = 'white';
 
 const styles = StyleSheet.create({
-  screen: {
-    //height: '100%',
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'black',
-  },
   topic: {
     flex: 0.3,
     alignItems: 'center',

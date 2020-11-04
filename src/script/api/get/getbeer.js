@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet, View, ActivityIndicator, FlatList, 
         Text, TouchableOpacity,ListItem, BackHandler} from "react-native";
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import { styleBackButton, Version, styleVersion } from '../../stylesheetcontainer'; 
+import { styleBackButton, Version, styleVersion, stylescreen } from '../../stylesheetcontainer'; 
 
 export default class getBeer extends React.Component {
 
@@ -151,7 +151,7 @@ export default class getBeer extends React.Component {
         </View>
       )}
       return(
-        <View style={styles.container}>
+        <View style={stylescreen.all_background}>
           <View style={styleBackButton.position}>
             <View style={styleBackButton.buttonSize}>
               <TouchableOpacity onPress={this.handleBackButtonClick} style={styleBackButton.optic} > 

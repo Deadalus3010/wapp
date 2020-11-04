@@ -3,54 +3,61 @@ import { Component } from 'react';
 import { View, ScrollView, SafeAreaView, Text, StyleSheet, TouchableOpacity, Image, Button } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { Version } from '../stylesheetcontainer.js';
+import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
 
-const { Monatsspecial }   =   require('./productscreen/monatsspecial.js');
-const { Getränke }        =   require('./productscreen/getraenke.js');
-const { getSnacks }       =   require('../api/get/getsnacks.js');
+const { Monatsspecial } = require('./productscreen/monatsspecial.js');
+const { Getränke } = require('./productscreen/getraenke.js');
+const { getSnacks } = require('../api/get/getsnacks.js');
 
 class HomeScreen extends React.Component {
   render() {
     return (
-      <View style={styles.screen}>
+      <View style={stylescreen.all_background}>
+        <ScrollView>
         <View style={styles.topic}>
           <Image style={styles.picture}
             source={require('../../img/Studentenclub_Wärmetauscher2.png')} />
         </View>
-        <View style={styles.bot}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Monatsspecial')}  >
-            <View style={styles.button_feat}>
+        <View style={{paddingVertical: abstand, alignItems:'center' }}>
+          <View style={styles.button_feat}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Monatsspecial')}  >
               <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
                 Monatsspecial
             </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Getränke')}>
-            <View style={styles.button_feat}>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={{paddingVertical: abstand, alignItems:'center' }}>
+          <View style={styles.button_feat}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Getränke')}>
               <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
-                Getränke 
+                Getränke
             </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Snacks')}>
-            <View style={styles.button_feat}>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={{paddingVertical: abstand, alignItems:'center'  }}>
+          <View style={styles.button_feat}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Snacks')}>
               <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
                 Snacks
             </Text>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.info}>
+        </ScrollView>
+        <View style={styleVersion.info}>
           <Text style={{ color: 'yellow', fontSize: 6 }}>
             {Version}
           </Text>
-        </View>
+        </View> 
       </View>
     )
   }
 }
-module.exports.HomeScreen =  HomeScreen; 
+module.exports.HomeScreen = HomeScreen;
 
+const abstand = 35;
 const b_color_background = 'black'
 const b_color_text = 'yellow'
 const styles = StyleSheet.create({
@@ -60,19 +67,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   topic: {
-    flex: 0.3,
     alignItems: 'center',
-    padding: 30,
+    padding: abstand,
+    
   },
   picture: {
     width: 300,
     height: 120,
   },
   bot: {
-    flex: 1,
+    //flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
-    padding: 40,
+    //padding: 40,
+    backgroundColor: 'white'
   },
   button_feat: {
     backgroundColor: b_color_background,
@@ -89,6 +97,7 @@ const styles = StyleSheet.create({
   info: {
     alignItems: 'flex-end',
     textAlign: 'center',
+    justifyContent:'flex-end',
   }
 });
 
@@ -112,4 +121,4 @@ export default class ProductsScreen extends React.Component {
   }
 }
 
-module.exports.ProductsScreen     = ProductsScreen;
+module.exports.ProductsScreen = ProductsScreen;

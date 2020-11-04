@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity } from "react-native";
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import { styleBackButton, Version, styleVersion } from '../../../script/stylesheetcontainer.js';
+import { styleBackButton, Version, styleVersion, stylescreen } from '../../../script/stylesheetcontainer.js';
 
 export default class getCocktail extends React.Component {
 
@@ -150,7 +150,7 @@ export default class getCocktail extends React.Component {
       )
     }
     return (
-      <View style={styles.container}>
+      <View style={stylescreen.all_background}>
         <View style={styleBackButton.position}>
           <View style={styleBackButton.buttonSize}>
             <TouchableOpacity onPress={this.handleBackButtonClick} style={styleBackButton.optic} >

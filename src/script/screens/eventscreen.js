@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text, ActivityIndicator, FlatList, TouchableOpacity } from 'react-native';
-import { Version } from '../stylesheetcontainer.js';
+import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
 
 
 export default class EventScreen extends React.Component {
@@ -99,7 +99,7 @@ export default class EventScreen extends React.Component {
   *****************/
 
   renderItem = (data) =>
-    <View style={styles.screen}>
+    <View style={stylescreen.all_background}>
       <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
         <View style={{ flex: 0.15, alignItems: 'center', paddingVertical: 20 }}>
           <Text style={{ fontSize: 30, color: 'yellow', textDecorationLine: 'underline' }}>
@@ -162,7 +162,7 @@ export default class EventScreen extends React.Component {
           </View>
         </View>
       </ScrollView>
-      <View style={styles.info}>
+      <View style={styleVersion.info}>
         <Text style={{ color: 'yellow', fontSize: 6 }}>
           {Version}
         </Text>
@@ -194,7 +194,6 @@ export default class EventScreen extends React.Component {
     )
   }
 }
-
 
 module.exports.EventScreen = EventScreen;
 
