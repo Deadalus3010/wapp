@@ -24,7 +24,7 @@ class HomeScreen extends React.Component {
         </View>
         <View style={{paddingVertical: abstand, alignItems:'center' }}>
           <View style={styles.button_feat}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Getraenke')}  >
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Monatsspecial')}  >
               <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
                 Monatsspecial
             </Text>
@@ -35,14 +35,14 @@ class HomeScreen extends React.Component {
           <View style={styles.button_feat}>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Getraenke')}>
               <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
-                Getraenke
+                Getränke
             </Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={{paddingVertical: abstand, alignItems:'center'  }}>
           <View style={styles.button_feat}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Getraenke')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Snacks')}>
               <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
                 Snacks
             </Text>
