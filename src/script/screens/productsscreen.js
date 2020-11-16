@@ -1,13 +1,17 @@
 import React from 'react';
-import { Component } from 'react';
-import { View, ScrollView, SafeAreaView, Text, StyleSheet, TouchableOpacity, Image, Button } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
 
 const { Monatsspecial } = require('./productscreen/monatsspecial.js');
-const { Getränke } = require('./productscreen/getraenke.js');
+const { Getraenke } = require('./productscreen/getraenke.js');
 const { getSnacks } = require('../api/get/getsnacks.js');
+const { getBeer } = require('../api/get/getbeer.js');
+const { getCocktail } = require('../api/get/getcocktail.js');
+const { getLongdrink } = require('../api/get/getlongdrink.js');
+const { getShots } = require('../api/get/getshots.js');
+const { getAFG } = require('../api/get/getafg.js');
 
 class HomeScreen extends React.Component {
   render() {
@@ -20,7 +24,7 @@ class HomeScreen extends React.Component {
         </View>
         <View style={{paddingVertical: abstand, alignItems:'center' }}>
           <View style={styles.button_feat}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Monatsspecial')}  >
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Getraenke')}  >
               <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
                 Monatsspecial
             </Text>
@@ -29,16 +33,16 @@ class HomeScreen extends React.Component {
         </View>
         <View style={{paddingVertical: abstand, alignItems:'center' }}>
           <View style={styles.button_feat}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Getränke')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Getraenke')}>
               <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
-                Getränke
+                Getraenke
             </Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={{paddingVertical: abstand, alignItems:'center'  }}>
           <View style={styles.button_feat}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Snacks')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Getraenke')}>
               <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
                 Snacks
             </Text>
@@ -56,6 +60,42 @@ class HomeScreen extends React.Component {
   }
 }
 module.exports.HomeScreen = HomeScreen;
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Getraenke: Getraenke,
+    Monatsspecial: Monatsspecial,
+    Snacks: getSnacks,
+    Beer: getBeer,
+    Cocktails: getCocktail,
+    Longdrinks: getLongdrink,
+    Shots: getShots,
+    AFG: getAFG,
+  },
+  {
+    initialRouteName: "Home",
+    headerMode: 'none',
+  }
+);
+
+const AppContainer = createAppContainer(AppNavigator);
+export default class ProductsScreen extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
+
+module.exports.ProductsScreen = ProductsScreen;
+
+/*****************  
+#
+#     [css]
+#
+#     Hier geben wir eine Form (ein Style) an und definieren,
+#     wie die Daten ausgegeben werden sollen.
+#
+*****************/ 
 
 const abstand = 35;
 const b_color_background = 'black'
@@ -100,25 +140,3 @@ const styles = StyleSheet.create({
     justifyContent:'flex-end',
   }
 });
-
-const AppNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Getränke: Getränke,
-    Monatsspecial: Monatsspecial,
-    Snacks: getSnacks,
-  },
-  {
-    initialRouteName: "Home",
-    headerMode: 'none',
-  }
-);
-
-const AppContainer = createAppContainer(AppNavigator);
-export default class ProductsScreen extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
-}
-
-module.exports.ProductsScreen = ProductsScreen;

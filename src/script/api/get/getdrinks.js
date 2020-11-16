@@ -111,10 +111,10 @@ export default class getDrinks extends React.Component {
       return( 
         <View style={styles.loader}> 
           <ActivityIndicator size="large" color="#0c9"/>
-          <Text>{"\n\n"}Fehler 404: Netzwerkfehler{"\n"}
+          <Text style={styleBackButton.text}>{"\n\n"}Fehler 404: Netzwerkfehler{"\n"}
 
           Bitte überprüfen Sie ihre Internetverbindung.{"\n"}
-          Dann versuchen Sie es bitter später erneut.
+          Dann versuchen Sie es bitte später erneut.
 
           </Text>
         </View>

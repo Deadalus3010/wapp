@@ -1,24 +1,48 @@
 import React from 'react';
-import { Component } from 'react';
 import { View, ScrollView, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { styleBackButton, Version, styleVersion, stylescreen } from '../../../script/stylesheetcontainer.js';
 
-const { getBeer } = require('../../api/get/getbeer.js');
-const { getCocktail } = require('../../api/get/getcocktail.js');
-const { getLongdrink } = require('../../api/get/getlongdrink.js');
-const { getShots } = require('../../api/get/getshots.js');
-const { getAFG } = require('../../api/get/getafg.js');
-const { HomeScreen } = require('../productsscreen.js');
+//class getraenke extends Component {
+//  constructor(props) {
+//    super(props);
+//    this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+//  };
+//  handleBackButtonClick() {                    /*das ist die OnPress funktion, nur ausgelagert */
+//    this.props.navigation.goBack(null);
+//    return true;
+//  }
 
-class getraenke extends Component {
-  constructor(props) {
-    super(props);
-    this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-  };
-  handleBackButtonClick() {                    /*das ist die OnPress funktion, nur ausgelagert */
+export default class Getraenke extends React.Component {
+
+  _isMounted = false;
+
+  /*****************  
+  #
+  #     []
+  #
+  #          
+  #
+  *****************/  
+
+ constructor(props) {
+      super(props);
+      this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+    };
+    handleBackButtonClick() {                    /*das ist die OnPress funktion, nur ausgelagert */
+      this.props.navigation.goBack(null);
+      return true;
+    }
+
+  /*****************  
+  #
+  #     [OnPressBack]
+  #
+  #    das ist die augelagerte OnPress funktion, für den "Zurück Button"
+  #
+  *****************/ 
+
+  handleBackButtonClick(){                    
     this.props.navigation.goBack(null);
     return true;
   }
@@ -96,7 +120,17 @@ class getraenke extends Component {
     )
   }
 }
-module.exports.Getränke = Getränke;
+
+module.exports.Getraenke = Getraenke;
+
+/*****************  
+#
+#     [css]
+#
+#     Hier geben wir eine Form (ein Style) an und definieren,
+#     wie die Daten ausgegeben werden sollen.
+#
+*****************/ 
 
 const b_color_background = 'black'
 const b_color_text = 'yellow'
@@ -133,28 +167,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 });
-
-const AppNavigator = createStackNavigator(
-  {
-    Home: getraenke,
-    Beer: getBeer,
-    Cocktails: getCocktail,
-    Longdrinks: getLongdrink,
-    Shots: getShots,
-    AFG: getAFG,
-
-  },
-  {
-    initialRouteName: "Home",
-    headerMode: 'none',
-  }
-);
-
-const AppContainer = createAppContainer(AppNavigator);
-export default class Getränke extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
-}
-
-module.exports.Getränke = Getränke;
