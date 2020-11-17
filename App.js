@@ -22,7 +22,7 @@ const { MemberScreen }    =   require('./src/script/screens/memberscreen.js');
 
 export default class Waermi extends React.Component {
   state = {
-    index: 0,
+    index: 2,
     routes: [                                            
       { key: 'news',     title: 'News',      icon: 'alpha-n-box',    color: 'orange',  },
       { key: 'event',    title: 'Events',    icon: 'alpha-e-box',    color: '#ff6666' },
