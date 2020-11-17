@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.wtest"
+        applicationId "com.wapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

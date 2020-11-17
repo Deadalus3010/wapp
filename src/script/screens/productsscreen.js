@@ -4,14 +4,14 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
 
-const { Monatsspecial }   = require('./productscreen/monatsspecial.js');
-const { Getraenke }       = require('./productscreen/getraenke.js');
-const { getSnacks }       = require('../api/get/getsnacks.js');
-const { getBeer }         = require('../api/get/getbeer.js');
-const { getCocktail }     = require('../api/get/getcocktail.js');
-const { getLongdrink }    = require('../api/get/getlongdrink.js');
-const { getShots }        = require('../api/get/getshots.js');
-const { getAFG }          = require('../api/get/getafg.js');
+const { Monatsspecial } = require('./productscreen/monatsspecial.js');
+const { Getraenke } = require('./productscreen/getraenke.js');
+const { getSnacks } = require('../api/get/getsnacks.js');
+const { getBeer } = require('../api/get/getbeer.js');
+const { getCocktail } = require('../api/get/getcocktail.js');
+const { getLongdrink } = require('../api/get/getlongdrink.js');
+const { getShots } = require('../api/get/getshots.js');
+const { getAFG } = require('../api/get/getafg.js');
 
 class HomeScreen extends React.Component {
   render() {
