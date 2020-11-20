@@ -28,6 +28,9 @@ export default class Getraenke extends React.Component {
  constructor(props) {
       super(props);
       this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+      this.state = {  
+        getAPIcall: '',  
+      }; 
     };
     handleBackButtonClick() {                    /*das ist die OnPress funktion, nur ausgelagert */
       this.props.navigation.goBack(null);
@@ -66,7 +69,9 @@ export default class Getraenke extends React.Component {
         </View>
         <ScrollView contentContainerStyle={styles.bot_scroll}>
           <View style={{ paddingBottom: sort_drinks_pad, paddingHorizontal: sort_drinks_pad }}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Beer')}>
+            <TouchableOpacity onPress={() => 
+            this.props.navigation.navigate('Drinks', {
+              getAPIcall: "beer",})}>
               <View style={styles.button_feat}>
                 <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
                   Biere
@@ -75,7 +80,9 @@ export default class Getraenke extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={{ padding: sort_drinks_pad }}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Cocktails')}>
+          <TouchableOpacity onPress={() => 
+            this.props.navigation.navigate('Drinks', {
+              getAPIcall: "cocktail",})}>
               <View style={styles.button_feat}>
                 <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
                   Cocktails
@@ -84,7 +91,9 @@ export default class Getraenke extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={{ padding: sort_drinks_pad }}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Longdrinks')}>
+          <TouchableOpacity onPress={() => 
+            this.props.navigation.navigate('Drinks', {
+              getAPIcall: "longdrink",})}>
               <View style={styles.button_feat}>
                 <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
                   Longdrinks
@@ -93,7 +102,9 @@ export default class Getraenke extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={{ padding: sort_drinks_pad }}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Shots')}>
+          <TouchableOpacity onPress={() => 
+            this.props.navigation.navigate('Drinks', {
+              getAPIcall: "shot",})}>
               <View style={styles.button_feat}>
                 <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
                   Spirituosen
@@ -102,7 +113,9 @@ export default class Getraenke extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={{ padding: sort_drinks_pad, paddingBottom: -30 }}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('AFG')}>
+          <TouchableOpacity onPress={() => 
+            this.props.navigation.navigate('Drinks', {
+              getAPIcall: "afg",})}>
               <View style={styles.button_feat}>
                 <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 24 }}>
                   Alkoholfreie Getränke

@@ -1,5 +1,8 @@
 import React from "react";
-import {StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity} from "react-native";
+import {StyleSheet, View, ActivityIndicator, FlatList, 
+        Text, TouchableOpacity,ListItem, BackHandler} from "react-native";
+import Icons from 'react-native-vector-icons/MaterialIcons';
+import { styleBackButton, Version, styleVersion, stylescreen } from '../../stylesheetcontainer'; 
 
 export default class getDrinks extends React.Component {
 
@@ -31,11 +34,26 @@ export default class getDrinks extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleBackButtonClick = this.handleBackButtonClick.bind(this); //Wichtig!!!
     this.state = {
       loading: true,
       dataSource:[]
     };
   }
+
+   /*****************  
+  #
+  #     [OnPressBack]
+  #
+  #    das ist die augelagerte OnPress funktion, für den "Zurück Button"
+  #
+  *****************/ 
+ 
+  handleBackButtonClick(){                    
+    this.props.navigation.goBack(null);
+    return true;
+  }
+
 
   /*****************  
   #
@@ -47,7 +65,9 @@ export default class getDrinks extends React.Component {
 
   componentDidMount(){
     this._isMounted = true;
-    fetch("https://waermiapi.platincore.de/api/drinks/list")
+    const { navigation } = this.props;  
+    const getAPI = navigation.getParam('getAPIcall', 'list');  
+    fetch("https://waermiapi.platincore.de/api/drinks/" + getAPI)
     .then(response => response.json())
     .then((responseJson)=> {
       this.setState({
@@ -75,7 +95,7 @@ export default class getDrinks extends React.Component {
       <View style={{
         height: .5,
         width:"100%",
-        backgroundColor:"rgba(0,0,0,0.5)",  //  # Und hier kann man die Farbe des Trennstriches verändern
+        backgroundColor:"black",  //  # Und hier kann man die Farbe des Trennstriches verändern
         }}
       />
     );
@@ -102,10 +122,23 @@ export default class getDrinks extends React.Component {
   *****************/ 
 
   renderItem=(data)=>
-    <TouchableOpacity style={styles.list}>
-      <Text style={styles.lightText}>{data.item.name}</Text>                              
-      <Text style={styles.lightText}>{data.item.price}</Text>
-      <Text style={styles.lightText}>{data.item.description}</Text></TouchableOpacity>    
+    <View style={styles.list}>
+      <TouchableOpacity style={{flex:2}}>
+        <Text style={{color:'yellow',fontSize:20}}>
+          {data.item.name}
+        </Text>
+      </TouchableOpacity>
+      <View style={{flex:1,alignItems:"flex-end"}}>
+        <Text style={{color:'yellow',fontSize:20}}>
+          {data.item.size}l
+        </Text>
+      </View>
+      <View style={{flex:1,alignItems:"flex-end",paddingRight:10}}>
+        <Text style={{color:'yellow',fontSize:20}}>
+          {data.item.price}€
+        </Text>
+      </View>
+    </View>   
     render(){
       if(this.state.loading){
       return( 
@@ -120,13 +153,28 @@ export default class getDrinks extends React.Component {
         </View>
       )}
       return(
-        <View style={styles.container}>
+        <View style={stylescreen.all_background}>
+          <View style={styleBackButton.position}>
+            <View style={styleBackButton.buttonSize}>
+              <TouchableOpacity onPress={this.handleBackButtonClick} style={styleBackButton.optic} > 
+                <Icons name={'arrow-back'} size={30} color='yellow'/>
+                <Text style={styleBackButton.text}>
+                  Zurück
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
           <FlatList
               data= {this.state.dataSource}
               ItemSeparatorComponent = {this.FlatListItemSeparator}
               renderItem= {item=> this.renderItem(item)}
               keyExtractor= {item=>item.name.toString()}
           />
+          <View style={styleVersion.info}>
+             <Text style={{ color: 'yellow', fontSize: 6 }}>
+               {Version}
+             </Text>
+          </View>
         </View>
       )}
 }
@@ -146,8 +194,8 @@ module.exports.getDrinks     = getDrinks;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
-    backgroundColor: "#fff"
+    flex: 1,
+    backgroundColor: "black"
    },
   loader:{
     flex: 0,
@@ -155,11 +203,13 @@ const styles = StyleSheet.create({
     margin: 0,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff"
+    backgroundColor: "black"
    },
   list:{
+    flexDirection: "row",
     paddingVertical: 4,
     margin: 5,
-    backgroundColor: "#fff"
+    backgroundColor: "black",
+    height:60,
    }
 });

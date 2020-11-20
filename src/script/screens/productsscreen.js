@@ -7,11 +7,7 @@ import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
 const { Monatsspecial } = require('./productscreen/monatsspecial.js');
 const { Getraenke } = require('./productscreen/getraenke.js');
 const { getSnacks } = require('../api/get/getsnacks.js');
-const { getBeer } = require('../api/get/getbeer.js');
-const { getCocktail } = require('../api/get/getcocktail.js');
-const { getLongdrink } = require('../api/get/getlongdrink.js');
-const { getShots } = require('../api/get/getshots.js');
-const { getAFG } = require('../api/get/getafg.js');
+const { getDrinks } = require('../api/get/getdrinks.js');
 
 class HomeScreen extends React.Component {
   render() {
@@ -67,11 +63,7 @@ const AppNavigator = createStackNavigator(
     Getraenke: Getraenke,
     Monatsspecial: Monatsspecial,
     Snacks: getSnacks,
-    Beer: getBeer,
-    Cocktails: getCocktail,
-    Longdrinks: getLongdrink,
-    Shots: getShots,
-    AFG: getAFG,
+    Drinks: getDrinks,
   },
   {
     initialRouteName: "Home",
