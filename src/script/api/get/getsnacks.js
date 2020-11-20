@@ -145,7 +145,7 @@ export default class getSnacks extends React.Component {
     }
     return (
       <View style={stylescreen.all_background}>
-        <View style={styleBackButton.position}>
+        <View style={[styleBackButton.position, {backgroundcolor: 'white'}]}>
           <View style={styleBackButton.buttonSize}>
             <TouchableOpacity onPress={this.handleBackButtonClick} style={styleBackButton.optic} >
               <Icons name={'arrow-back'} size={30} color='yellow' />
