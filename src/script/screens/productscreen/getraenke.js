@@ -3,16 +3,6 @@ import { View, ScrollView, Text, StyleSheet, TouchableOpacity } from 'react-nati
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { styleBackButton, Version, styleVersion, stylescreen } from '../../../script/stylesheetcontainer.js';
 
-//class getraenke extends Component {
-//  constructor(props) {
-//    super(props);
-//    this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-//  };
-//  handleBackButtonClick() {                    /*das ist die OnPress funktion, nur ausgelagert */
-//    this.props.navigation.goBack(null);
-//    return true;
-//  }
-
 export default class Getraenke extends React.Component {
 
   _isMounted = false;
@@ -32,10 +22,6 @@ export default class Getraenke extends React.Component {
         getAPIcall: '',  
       }; 
     };
-    handleBackButtonClick() {                    /*das ist die OnPress funktion, nur ausgelagert */
-      this.props.navigation.goBack(null);
-      return true;
-    }
 
   /*****************  
   #
@@ -50,10 +36,6 @@ export default class Getraenke extends React.Component {
     return true;
   }
 
-  /*Backhandler hat einen Bug, der Code der beim Monatsspecial klappt geht hier nicht, sicher ein 
-    Konflikt mit dem Navigator, beim Versuch den Zurück Button in den bestehenden Navigator
-    einzubauen entstand ein weiterer Bug bei dem die Navigation auf der Seite productscreen
-    nicht mehr funfktioniert hat. Weitere Lösungen werden demnächst getestest */
   render() {
     return (
       <View style={stylescreen.all_background}>
@@ -70,7 +52,7 @@ export default class Getraenke extends React.Component {
         <ScrollView contentContainerStyle={styles.bot_scroll}>
           <View style={{ paddingBottom: sort_drinks_pad, paddingHorizontal: sort_drinks_pad }}>
             <TouchableOpacity onPress={() => 
-            this.props.navigation.navigate('Drinks', {
+              this.props.navigation.navigate('Drinks', {
               getAPIcall: "beer",})}>
               <View style={styles.button_feat}>
                 <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
@@ -81,7 +63,7 @@ export default class Getraenke extends React.Component {
           </View>
           <View style={{ padding: sort_drinks_pad }}>
           <TouchableOpacity onPress={() => 
-            this.props.navigation.navigate('Drinks', {
+              this.props.navigation.navigate('Drinks', {
               getAPIcall: "cocktail",})}>
               <View style={styles.button_feat}>
                 <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
@@ -92,7 +74,7 @@ export default class Getraenke extends React.Component {
           </View>
           <View style={{ padding: sort_drinks_pad }}>
           <TouchableOpacity onPress={() => 
-            this.props.navigation.navigate('Drinks', {
+              this.props.navigation.navigate('Drinks', {
               getAPIcall: "longdrink",})}>
               <View style={styles.button_feat}>
                 <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
@@ -103,7 +85,7 @@ export default class Getraenke extends React.Component {
           </View>
           <View style={{ padding: sort_drinks_pad }}>
           <TouchableOpacity onPress={() => 
-            this.props.navigation.navigate('Drinks', {
+              this.props.navigation.navigate('Drinks', {
               getAPIcall: "shot",})}>
               <View style={styles.button_feat}>
                 <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 30 }}>
@@ -114,7 +96,7 @@ export default class Getraenke extends React.Component {
           </View>
           <View style={{ padding: sort_drinks_pad, paddingBottom: -30 }}>
           <TouchableOpacity onPress={() => 
-            this.props.navigation.navigate('Drinks', {
+              this.props.navigation.navigate('Drinks', {
               getAPIcall: "afg",})}>
               <View style={styles.button_feat}>
                 <Text style={{ color: b_color_text, textAlign: 'center', fontSize: 24 }}>

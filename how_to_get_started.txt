@@ -22,3 +22,11 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 -> android\gradle\wrapper
 distributionUrl=https\://services.gradle.org/distributions/gradle-6.3-all.zip
+
+
+---------------------------------------------------
+Bottomnavbar
+
+@react-navigator/material-top-tabs
+react-native-tab-view
+react-native-reanimated

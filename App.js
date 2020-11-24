@@ -1,78 +1,60 @@
 import * as React from 'react';
-import { BottomNavigation } from 'react-native-paper';
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+ 
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons'
+ 
 const { NewsScreen }      =   require('./src/script/screens/newsscreen.js');
 const { EventScreen }     =   require('./src/script/screens/eventscreen.js');
 const { ProductsScreen }  =   require('./src/script/screens/productsscreen.js'); 
 const { ContactScreen }   =   require('./src/script/screens/contactscreen.js');
 const { MemberScreen }    =   require('./src/script/screens/memberscreen.js');
-
-/*****************  
-#
-#     [Nav]
-#
-#     Setzt Elemente auf den Bildschirm 
-#
-#    { key: 'home',      title: 'Home',            icon: 'alpha-h-box',    color: '#3F51B5' },
-#    { key: 'news',      title: 'News',            icon: 'alpha-n-box',    color: '#009688' },
-#    { key: 'products',  title: 'Produkte',        icon: 'alpha-p-box',    color: '#795548' },
-#    { key: 'settings',  title: 'Einstellungen',   icon: 'alpha-e-box',    color: '#607D8B' },   
-#
-*****************/ 
-
-export default class Waermi extends React.Component {
-  state = {
-    index: 2,
-    routes: [                                            
-      { key: 'news',     title: 'News',      icon: 'alpha-n-box',    color: 'orange',  },
-      { key: 'event',    title: 'Events',    icon: 'alpha-e-box',    color: '#ff6666' },
-      { key: 'products', title: 'Produkte',  icon: 'alpha-p-box',    color: '#D1D63B' },
-      { key: 'member',   title: 'Mitglieder', icon: 'alpha-m-box',    color: 'blue'},
-      { key: 'contact',  title: 'Kontakt',   icon: 'alpha-k-box',    color: 'grey' },
-      
-    ]
-  }
-  activeColor= 'yellow'
-
-  _handleIndexChange = index => this.setState({ index });
-
-  /*****************  
-  #
-  #     [Screen]
-  #
-  #     Definiert die Bottomnavbar    
-  #
-  #   _renderScene = BottomNavigation.SceneMap({
-  #     news:      NewsRoute,
-  #     event:     EventRoute,
-  #     products:  ProductsRoute,
-  #     contact:   ContactRoute,
-  #   });
-  *****************/ 
-
-  _renderScene = BottomNavigation.SceneMap({
-    news:      NewsScreen,
-    event:     EventScreen,
-    products:  ProductsScreen,
-    contact:   ContactScreen,
-    member:    MemberScreen,
-  });
-
-  /*****************  
-  #
-  #     [Screen]
-  #
-  #     Rendert die Bottomnavbar    
-  #
-  *****************/ 
-
-  render() {
-    return (
-      <BottomNavigation
-        navigationState={this.state}
-        onIndexChange={this._handleIndexChange}
-        renderScene={this._renderScene}
-      />
-    );
-  }
+ 
+/*Bestimmt nur welche Art von Tab Navigator wir wollen */
+const Tab = createMaterialTopTabNavigator()
+ 
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        tabBarPosition='bottom'
+        tabBarOptions={{
+          activeTintColor: 'grey', 
+          style: {backgroundColor: 'yellow'},
+          inactiveTintColor: 'black', 
+          inactiveBackgroundColor: 'black',
+          showIcon: 'true', 
+          labelStyle: {fontSize: 7},
+          }}
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName;
+            let iconcolor_ind;
+            let iconcolor_def = 'black';
+ 
+            if (route.name === 'News') {
+              iconName = focused
+                  ? 'rebel'
+                  : 'tree';
+              iconcolor_ind = 'yellow';
+            }
+            else if (route.name === 'Events') {
+              iconName = focused 
+                  ? 'ra'
+                  : 'ra';
+              iconcolor_ind = 'blue';
+            }
+            return <Icon name={iconName} size={20} color={iconcolor_def} />;
+          },
+        })
+        }>
+          <Tab.Screen name="News"       component={NewsScreen} />
+          <Tab.Screen name="Events"     component={EventScreen} />
+          <Tab.Screen name="Produkte"   component={ProductsScreen} />
+          <Tab.Screen name="Mitglieder" component={MemberScreen} />
+          <Tab.Screen name="Kontakt"    component={ContactScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
 }
