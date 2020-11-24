@@ -1,6 +1,6 @@
 import React from "react";
 import {StyleSheet, View, ActivityIndicator, FlatList, 
-        Text, TouchableOpacity,ListItem, BackHandler} from "react-native";
+        Text, TouchableOpacity, Alert} from "react-native";
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { styleBackButton, Version, styleVersion, stylescreen } from '../../stylesheetcontainer'; 
 
@@ -103,6 +103,19 @@ export default class getDrinks extends React.Component {
 
   /*****************  
   #
+  #     [Alert]
+  #
+  #     Hier werden die Zutaten für jedes Getränk angezeigt
+  #
+  *****************/ 
+
+  showAlert = (name, description) => {
+    Alert.alert('Zutatenliste von: '+ name, description);  
+  }
+
+
+  /*****************  
+  #
   #     [Ausgabe]
   #
   #     Die angeforderten API-Daten werden hier gefiltert und dargestellt.
@@ -123,7 +136,7 @@ export default class getDrinks extends React.Component {
 
   renderItem=(data)=>
     <View style={styles.list}>
-      <TouchableOpacity style={{flex:2}}>
+      <TouchableOpacity style={{flex:2}} onPress={() => this.showAlert(data.item.name, data.item.description)}>
         <Text style={{color:'yellow',fontSize:20}}>
           {data.item.name}
         </Text>
