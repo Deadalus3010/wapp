@@ -2,6 +2,7 @@ import React from "react";
 import {StyleSheet, View, ActivityIndicator, FlatList, 
         Text, TouchableOpacity, Alert} from "react-native";
 import Icons from 'react-native-vector-icons/MaterialIcons';
+import NumberFormat from "react-number-format";
 import { styleBackButton, Version, styleVersion, stylescreen } from '../../stylesheetcontainer'; 
 
 export default class getDrinks extends React.Component {
@@ -136,20 +137,25 @@ export default class getDrinks extends React.Component {
 
   renderItem=(data)=>
     <View style={styles.list}>
-      <TouchableOpacity style={{flex:2}} onPress={() => this.showAlert(data.item.name, data.item.description)}>
+      <TouchableOpacity style={{flex:3}} onPress={() => this.showAlert(data.item.name, data.item.description)}>
         <Text style={{color:'yellow',fontSize:20}}>
           {data.item.name}
         </Text>
       </TouchableOpacity>
-      <View style={{flex:1,alignItems:"flex-end"}}>
+      <View style={{flex:1,alignItems:"flex-end", paddingRight:10}}>
         <Text style={{color:'yellow',fontSize:20}}>
           {data.item.size}l
         </Text>
       </View>
       <View style={{flex:1,alignItems:"flex-end",paddingRight:10}}>
-        <Text style={{color:'yellow',fontSize:20}}>
-          {data.item.price}€
-        </Text>
+        <NumberFormat 
+          value={data.item.price} 
+          suffix={'€'} 
+          fixedDecimalScale={true}
+          displayType={'text'}
+          renderText={text =><Text style={{color:'yellow',fontSize:20}}>{text}</Text>} 
+          allowedDecimalSeparators={','} 
+          decimalScale={'2'}/>    
       </View>
     </View>   
     render(){
