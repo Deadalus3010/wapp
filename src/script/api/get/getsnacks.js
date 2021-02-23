@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity } from "react-native";
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { styleBackButton, Version, styleVersion, stylescreen } from '../../../script/stylesheetcontainer.js';
+import NumberFormat from "react-number-format";
 
 export default class getSnacks extends React.Component {
 
@@ -125,7 +126,14 @@ export default class getSnacks extends React.Component {
       </View>
       <View style={{ flex: 1, alignItems: "flex-end", paddingRight: 10 }}>
         <Text style={{ color: 'yellow', fontSize: 20 }}>
-          {data.item.price}€
+        <NumberFormat 
+          value={data.item.price} 
+          suffix={'€'} 
+          fixedDecimalScale={true}
+          displayType={'text'}
+          renderText={text =><Text style={{color:'yellow',fontSize:20}}>{text}</Text>} 
+          decimalSeparator={','} 
+          decimalScale={2}/>  
         </Text>
       </View>
     </View>

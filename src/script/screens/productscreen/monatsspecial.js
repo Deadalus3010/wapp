@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Text, BackHandler, TouchableOpacity } from 'react-native';
+import { View, ScrollView, StyleSheet, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { styleBackButton, styleVersion, Version } from '../../../script/stylesheetcontainer.js';
 
@@ -14,6 +14,17 @@ export default class Monatsspecial extends Component {
     };
   }
   componentDidMount() {
+    this._isMounted = true;
+    fetch("https://waermiapi.platincore.de/api/specials/list")
+      .then(response => response.json())
+      .then((responseJson) => {
+        this.setState({
+          loading: false,
+          dataSource: responseJson
+        })
+      })
+      .catch(error => console.log(error)) //Fehler catching
+
     var that = this;
     var monthNames = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
     var date = new Date().getDate(); //Current Date
@@ -27,47 +38,92 @@ export default class Monatsspecial extends Component {
         month,
     });
   }
-  handleBackButtonClick() {
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  handleBackButtonClick(){                    
     this.props.navigation.goBack(null);
     return true;
   }
-  render() {
+
+  FlatListItemSeparator = () => {
     return (
-      <View style={styles.screen}>
-        {/*Position muss hier etwas geändert werden, deshalb ein eigenständiges Padding */}
-        <View style={[styleBackButton.position, { paddingBottom: -10 }]}>
-          <View style={styleBackButton.buttonSize}>
-            <TouchableOpacity onPress={this.handleBackButtonClick} style={styleBackButton.optic} >
-              <Icons name={'arrow-back'} size={30} color='yellow' />
-              <Text style={styleBackButton.text}>
-                Zurück
-                </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <ScrollView contentContainerStyle={styles.bot_scroll_special}>
-          <View style={styles.topic_special}>
-            <Text
-              style={{ fontSize: 60, color: b_color_text, textAlignVertical: 'center' }}>
-              {this.state.date}
+      <View style={{
+        height: .5,
+        width: "100%",
+        backgroundColor: "rgba(0,0,0,0.5)",  //  # Und hier kann man die Farbe des Trennstriches verändern
+      }}
+      />
+    );
+  }
+
+
+  renderItem = (data) =>
+    <View style={styles.screen}>
+      {/*Position muss hier etwas geändert werden, deshalb ein eigenständiges Padding */}
+      <View style={[styleBackButton.position, { paddingBottom: -10 }]}>
+        <View style={styleBackButton.buttonSize}>
+          <TouchableOpacity onPress={this.handleBackButtonClick} style={styleBackButton.optic} >
+            <Icons name={'arrow-back'} size={30} color='yellow' />
+            <Text style={styleBackButton.text}>
+              Zurück
             </Text>
-          </View>
-          <View style={{ paddingTop: 100, alignItems: 'center' }}>
-            <Text style={{ color: b_color_text, fontSize: 40 }}>
-              Mexikaner
+          </TouchableOpacity>
+        </View>
+      </View>
+      <ScrollView contentContainerStyle={styles.bot_scroll_special}>
+        <View style={styles.topic_special}>
+          <Text
+            style={{ fontSize: 60, color: b_color_text, textAlignVertical: 'center' }}>
+            {this.state.date}
+          </Text>
+        </View>
+        <View style={{ paddingTop: 100, alignItems: 'center' }}>
+          <Text style={{ color: b_color_text, fontSize: 40 }}>
+            {data.item.name}
+          </Text>
+        </View>
+        <View style={{ padding: 20, alignItems: 'center' }}>
+          <Text style={{ color: b_color_text, fontSize: 30 }}>
+            für
               </Text>
-          </View>
-          <View style={{ padding: 20, alignItems: 'center' }}>
-            <Text style={{ color: b_color_text, fontSize: 30 }}>
-              für
+        </View>
+        <View style={{ alignItems: 'center' }}>
+          <Text style={{ color: 'red', fontSize: 50 }}>
+          {data.item.price}
               </Text>
-          </View>
-          <View style={{ alignItems: 'center' }}>
-            <Text style={{ color: 'red', fontSize: 50 }}>
-              1,50€
-              </Text>
-          </View>
-        </ScrollView>
+        </View>
+      </ScrollView>
+      <View style={styleVersion.info}>
+        <Text style={{ color: 'yellow', fontSize: 6 }}>
+          {Version}
+        </Text>
+      </View>
+    </View>
+  render() {
+    if (this.state.loading) {
+      return (
+        <View style={styles.loader}>
+          <ActivityIndicator size="large" color="#0c9" />
+          <Text>{"\n\n"}Fehler 404: Netzwerkfehler{"\n"}
+
+          Bitte überprüfen Sie ihre Internetverbindung.{"\n"}
+          Dann versuchen Sie es bitter später erneut.
+
+          </Text>
+        </View>
+      )
+    }
+    return (
+      <View style={styles.container}>
+        <FlatList
+          data={this.state.dataSource}
+          ItemSeparatorComponent={this.FlatListItemSeparator}
+          renderItem={item => this.renderItem(item)}
+          keyExtractor={item => item.name.toString()}
+        />
         <View style={styleVersion.info}>
           <Text style={{ color: 'yellow', fontSize: 6 }}>
             {Version}
@@ -75,6 +131,7 @@ export default class Monatsspecial extends Component {
         </View>
       </View>
     )
+
   }
 }
 module.exports.Monatsspecial = Monatsspecial;
@@ -87,6 +144,7 @@ const styles = StyleSheet.create({
     height: '100%',
     flexDirection: 'column',
     backgroundColor: 'black',
+    
   },
   topic_special: {
     alignItems: 'center',
@@ -101,5 +159,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     padding: 20,
     paddingTop: 20,
+    
   },
 });
