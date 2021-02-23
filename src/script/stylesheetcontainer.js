@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import NumberFormat from "react-number-format";
 
 /*Das ist die Konfiguration für den Hintergrund aller App Seiten */
 export const stylescreen = StyleSheet.create({

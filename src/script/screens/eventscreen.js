@@ -1,6 +1,8 @@
+import moment from 'moment';
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text, ActivityIndicator, FlatList, TouchableOpacity } from 'react-native';
 import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
+
 
 
 export default class EventScreen extends React.Component {
@@ -115,7 +117,7 @@ export default class EventScreen extends React.Component {
           <View style={{ flexDirection: 'row', paddingTop: 20 }}>
             <View style={{ alignItems: 'center', borderRadius: 15, borderWidth: 3, borderColor: 'red', width: '50%' }}>
               <Text style={{ fontSize: 30, color: 'yellow' }}>
-                {data.item.date}
+                {moment(data.item.date, 'MM.DD.YYYY', true).format('DD.MM.YYYY')}
               </Text>
             </View>
             <View style={{ alignItems: 'center', borderRadius: 15, borderWidth: 3, borderColor: 'red', width: '50%' }}>
@@ -138,35 +140,30 @@ export default class EventScreen extends React.Component {
             <View>
               <Text style={{ fontSize: 25, color: 'white', textAlign: 'center' }}>
                 {data.item.special3}
-             </Text>
+              </Text>
             </View>
           </View>
         </View>
         <View style={{ flex: 0.15, alignItems: 'center', paddingBottom: 20, paddingTop: 30 }}>
           <Text style={{ fontSize: 30, color: 'yellow', textDecorationLine: 'underline' }}>
             Kommende Veranstaltung
-        </Text>
+          </Text>
         </View>
         <View style={{ flex: 0.40, }}>
           <View style={{ paddingVertical: 20, paddingHorizontal: 10, flexDirection: "row", alignItems: 'flex-start', width: '100%' }}>
             <View style={{ flex: 0.8, alignself: 'flex-start' }} >
               <Text style={{ color: 'white', fontSize: 22 }}>
-                Candy Party
-        </Text>
+                {data.item.name}
+              </Text>
             </View>
             <View style={{ flex: 0.2, alignself: 'flex-start' }}>
               <Text style={{ color: 'white', fontSize: 22 }}>
-                01.06
-        </Text>
+                {moment(data.item.date, 'MM.DD.YYYY', true).format('DD.MM')}
+              </Text>
             </View>
           </View>
         </View>
       </ScrollView>
-      <View style={styleVersion.info}>
-        <Text style={{ color: 'yellow', fontSize: 6 }}>
-          {Version}
-        </Text>
-      </View>
     </View>
   render() {
     if (this.state.loading) {
@@ -190,6 +187,11 @@ export default class EventScreen extends React.Component {
           renderItem={item => this.renderItem(item)}
           keyExtractor={item => item.name.toString()}
         />
+        <View style={styleVersion.info}>
+          <Text style={{ color: 'yellow', fontSize: 6 }}>
+            {Version}
+          </Text>
+        </View>
       </View>
     )
   }

@@ -135,7 +135,7 @@ export default class getDrinks extends React.Component {
   #
   *****************/ 
 
-  renderItem=(data)=>
+  renderItem = (data) =>
     <View style={styles.list}>
       <TouchableOpacity style={{flex:3}} onPress={() => this.showAlert(data.item.name, data.item.description)}>
         <Text style={{color:'yellow',fontSize:20}}>
@@ -154,8 +154,8 @@ export default class getDrinks extends React.Component {
           fixedDecimalScale={true}
           displayType={'text'}
           renderText={text =><Text style={{color:'yellow',fontSize:20}}>{text}</Text>} 
-          allowedDecimalSeparators={','} 
-          decimalScale={'2'}/>    
+          decimalSeparator={','} 
+          decimalScale={2}/>    
       </View>
     </View>   
     render(){
@@ -188,7 +188,7 @@ export default class getDrinks extends React.Component {
               ItemSeparatorComponent = {this.FlatListItemSeparator}
               renderItem= {item=> this.renderItem(item)}
               keyExtractor= {item=>item.name.toString()}
-          />
+            />
           <View style={styleVersion.info}>
              <Text style={{ color: 'yellow', fontSize: 6 }}>
                {Version}
