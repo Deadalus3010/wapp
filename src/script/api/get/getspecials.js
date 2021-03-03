@@ -56,10 +56,28 @@ export default class getSpecials extends React.Component {
       })
     })
     .catch(error=>console.log(error)) //Fehler catching
+
+    var that = this;
+    var monthNames = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+    var date = new Date().getDate(); //Current Date
+    var month = monthNames[new Date().getMonth()]; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    var hours = new Date().getHours(); //Current Hours
+    var min = new Date().getMinutes(); //Current Minutes
+    var sec = new Date().getSeconds(); //Current Seconds
+    that.setState({
+      date:
+        month,
+    });
   }
 
   componentWillUnmount() {
     this._isMounted = false;
+  }
+
+  handleBackButtonClick() {
+    this.props.navigation.goBack(null);
+    return true;
   }
 
   /*****************  

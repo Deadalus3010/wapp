@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import { styleBackButton, styleVersion, Version } from '../../../script/stylesheetcontainer.js';
+import NumberFormat from "react-number-format";
+import { styleBackButton, styleVersion, Version, stylescreen, styleError } from '../../../script/stylesheetcontainer.js';
 
 export default class Monatsspecial extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ export default class Monatsspecial extends Component {
     this._isMounted = false;
   }
 
-  handleBackButtonClick(){                    
+  handleBackButtonClick() {
     this.props.navigation.goBack(null);
     return true;
   }
@@ -59,9 +60,8 @@ export default class Monatsspecial extends Component {
     );
   }
 
-
   renderItem = (data) =>
-    <View style={styles.screen}>
+    <View>
       {/*Position muss hier etwas geändert werden, deshalb ein eigenständiges Padding */}
       <View style={[styleBackButton.position, { paddingBottom: -10 }]}>
         <View style={styleBackButton.buttonSize}>
@@ -92,22 +92,24 @@ export default class Monatsspecial extends Component {
         </View>
         <View style={{ alignItems: 'center' }}>
           <Text style={{ color: 'red', fontSize: 50 }}>
-          {data.item.price}
-              </Text>
+            <NumberFormat
+              value={data.item.price}
+              suffix={'€'}
+              fixedDecimalScale={true}
+              displayType={'text'}
+              renderText={text => <Text style={{ color: 'red', fontSize: 50 }}>{text}</Text>}
+              decimalSeparator={','}
+              decimalScale={2} />
+          </Text>
         </View>
       </ScrollView>
-      <View style={styleVersion.info}>
-        <Text style={{ color: 'yellow', fontSize: 6 }}>
-          {Version}
-        </Text>
-      </View>
     </View>
   render() {
     if (this.state.loading) {
       return (
         <View style={styles.loader}>
           <ActivityIndicator size="large" color="#0c9" />
-          <Text>{"\n\n"}Fehler 404: Netzwerkfehler{"\n"}
+          <Text style={styleBackButton.text}>{"\n\n"}Fehler 404: Netzwerkfehler{"\n"}
 
           Bitte überprüfen Sie ihre Internetverbindung.{"\n"}
           Dann versuchen Sie es bitter später erneut.
@@ -117,7 +119,7 @@ export default class Monatsspecial extends Component {
       )
     }
     return (
-      <View style={styles.container}>
+      <View style={stylescreen.all_background}>
         <FlatList
           data={this.state.dataSource}
           ItemSeparatorComponent={this.FlatListItemSeparator}
@@ -136,16 +138,9 @@ export default class Monatsspecial extends Component {
 }
 module.exports.Monatsspecial = Monatsspecial;
 
-
 const b_color_background = 'black'
 const b_color_text = 'yellow'
 const styles = StyleSheet.create({
-  screen: {
-    height: '100%',
-    flexDirection: 'column',
-    backgroundColor: 'black',
-    
-  },
   topic_special: {
     alignItems: 'center',
     textAlign: 'center',
@@ -159,6 +154,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     padding: 20,
     paddingTop: 20,
-    
   },
 });
