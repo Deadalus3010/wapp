@@ -5,11 +5,23 @@ import NumberFormat from "react-number-format";
 import { styleBackButton, styleVersion, Version, stylescreen, styleError } from '../../../script/stylesheetcontainer.js';
 
 export default class Monatsspecial extends Component {
+
+  _isMounted = false;
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "Source Listing",
+      headerStyle: { backgroundColor: "#fff" },
+      headerTitleStyle: { textAlign: "center", flex: 1 }
+    };
+  };
+
   constructor(props) {
     super(props);
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-
     this.state = {
+      loading: true,
+      dataSource: [],
       //default value of the date time
       date: '',
     };
@@ -75,8 +87,7 @@ export default class Monatsspecial extends Component {
       </View>
       <ScrollView contentContainerStyle={styles.bot_scroll_special}>
         <View style={styles.topic_special}>
-          <Text
-            style={{ fontSize: 60, color: b_color_text, textAlignVertical: 'center' }}>
+          <Text style={{ fontSize: 60, color: b_color_text, textAlignVertical: 'center' }}>
             {this.state.date}
           </Text>
         </View>
@@ -107,7 +118,7 @@ export default class Monatsspecial extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <View style={styles.loader}>
+        <View style={styleError.loader}>
           <ActivityIndicator size="large" color="#0c9" />
           <Text style={styleBackButton.text}>{"\n\n"}Fehler 404: Netzwerkfehler{"\n"}
 

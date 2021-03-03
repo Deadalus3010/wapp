@@ -49,7 +49,7 @@ export const styleVersion = StyleSheet.create({
     },
 })
 
-/*Optik der Fehlermedlung die aufgrund von Internetmangel entsteht*/
+/*Optik der Fehlermeldung die aufgrund von Internetmangel entsteht*/
 export const styleError = StyleSheet.create({
     loader: {
         flex: 0,
