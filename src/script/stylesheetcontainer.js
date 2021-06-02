@@ -37,7 +37,7 @@ export const styleBackButton = StyleSheet.create({
 })
 
 /*Von hier aus wird der aktuelle Versionsstand und die Urheber unten angezeigt*/
-export const Version = "Alpha 3.1 (Nicolas Krieg u. Lucas Oehler)";
+export const Version = "Alpha 1.2 (NewsFees))";
 
 /*Optik der Versionsview, wichtig für die Anordnung*/
 export const styleVersion = StyleSheet.create({

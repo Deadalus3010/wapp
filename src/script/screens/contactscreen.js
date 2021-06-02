@@ -67,6 +67,10 @@ class ContactScreen extends React.Component {
               {'\t\t\t\t\t\t\t\t\t\t\t\t'}06217 Merseburg
             </Text>
           </View>
+          <View style={styles.topic}>
+          <Image style={{ width: '100%' , height: 200 }}
+            source={require('../../img/Map.jpg')} />
+        </View>
         </View>
         </ScrollView>
         <View style={styleVersion.info}>
