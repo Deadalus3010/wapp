@@ -48,3 +48,15 @@ export const styleVersion = StyleSheet.create({
         textAlign: 'center',
     },
 })
+
+/*Optik der Fehlermeldung die aufgrund von Internetmangel entsteht*/
+export const styleError = StyleSheet.create({
+    loader: {
+        flex: 0,
+        height: 850,
+        margin: 0,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "black"
+    }  
+})

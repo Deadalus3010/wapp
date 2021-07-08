@@ -1,7 +1,8 @@
 import React from "react";
 import { StyleSheet, View, ActivityIndicator, FlatList, Text, TouchableOpacity } from "react-native";
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import { styleBackButton, Version, styleVersion, stylescreen } from '../../../script/stylesheetcontainer.js';
+import NumberFormat from "react-number-format";
+import { styleBackButton, Version, styleVersion, stylescreen, styleError } from '../../../script/stylesheetcontainer.js';
 
 export default class getSnacks extends React.Component {
 
@@ -125,14 +126,21 @@ export default class getSnacks extends React.Component {
       </View>
       <View style={{ flex: 1, alignItems: "flex-end", paddingRight: 10 }}>
         <Text style={{ color: 'yellow', fontSize: 20 }}>
-          {data.item.price}€
+        <NumberFormat 
+          value={data.item.price} 
+          suffix={'€'} 
+          fixedDecimalScale={true}
+          displayType={'text'}
+          renderText={text =><Text style={{color:'yellow',fontSize:20}}>{text}</Text>} 
+          decimalSeparator={','} 
+          decimalScale={2}/>  
         </Text>
       </View>
     </View>
   render() {
     if (this.state.loading) {
       return (
-        <View style={styles.loader}>
+        <View style={styleError.loader}>
           <ActivityIndicator size="large" color="#0c9" />
           <Text style={styleBackButton.text}>{"\n\n"}Fehler 404: Netzwerkfehler{"\n"}
 
@@ -185,20 +193,11 @@ module.exports.getSnacks = getSnacks;
 <View style={{ flex: 0, justifyContent: 'center', alignItems: 'center' }}></View>
 
 const styles = StyleSheet.create({
-  loader: {
-    flex: 0,
-    height: 850,
-    margin: 0,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "black"
-  },
   list: {
     flexDirection: "row",
     paddingVertical: 4,
     margin: 5,
     backgroundColor: "black",
     height: 60,
-
   }
 });
