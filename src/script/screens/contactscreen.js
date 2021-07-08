@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
 
+//Kommentar
 class ContactScreen extends React.Component {
   render() {
     return (

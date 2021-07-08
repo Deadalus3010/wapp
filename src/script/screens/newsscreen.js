@@ -3,7 +3,7 @@ import { Text, View, ScrollView} from 'react-native';
 import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
 import { FlatList } from 'react-native-gesture-handler';
 
-
+//Kommentar
 //temporäre Daten bis aus der Datenbank gezogen wird. 
 posts = [
     {

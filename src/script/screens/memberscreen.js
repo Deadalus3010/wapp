@@ -3,6 +3,8 @@ import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { stylescreen, styleVersion, Version } from '../stylesheetcontainer.js';
 
+
+//Kommentar
 class MemberScreen extends React.Component {
   render() {
     return (
